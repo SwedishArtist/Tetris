@@ -243,13 +243,15 @@ document.addEventListener('keydown', event => {
 	}
 });
 
+function resFunc() {
+	playerReset();
+	updateScore();
+}
 
 
 function clickFunc() {
 	playerReset();
 	updateScore();
 	update();
-
-debugger
 }
 
