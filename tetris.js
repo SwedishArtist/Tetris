@@ -1,5 +1,6 @@
-const canvas  = document.getElementById('tetris');
-const context = canvas.getContext('2d');
+const canvas      = document.getElementById('tetris');
+const context     = canvas.getContext('2d');
+const startButton = document.getElementById("Button");
 
 context.scale(20, 20);
 
@@ -242,9 +243,13 @@ document.addEventListener('keydown', event => {
 	}
 });
 
-let startButton = document.getElementById("Button");
 
 
-playerReset();
-updateScore();
-update();
+function clickFunc() {
+	playerReset();
+	updateScore();
+	update();
+
+debugger
+}
+
