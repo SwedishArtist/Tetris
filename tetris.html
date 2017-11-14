@@ -1,21 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="sv">
 <head>
-	<title>Tetris</title>
+	<meta charset="UTF-8">
+	<title>Lobby</title>
 	<link rel="stylesheet" href="style.css" />
-
-
 </head>
-<body>
 
 	<ul>
 		<li><a href="index.html">Lobby</a></li>
 		<li>Tetris</li>
 		<li><a href=""></a></li>
 	</ul>
-	
-	<button onclick="clickFunc()" type="Button">Start</button>
-	<button onclick="resFunc()" type="Button">Restart</button>
 
+<body>
+
+	<div class="buttons">
+      <button onclick="clickFunc()" type="Button">Start</button>
+	  <button onclick="resFunc()" type="Button">Restart</button>
+	  <button onclick="stopFunc()" type="Button">Stop</button>
+	  <p>Press Q to turn</p>
+    </div>
 	<div id="score"></div>
 	<canvas id="tetris" width="240" height="400"></canvas>
 	<script src="tetris.js"></script>

@@ -259,4 +259,15 @@ function clickFunc() {
 	playerReset();
 	updateScore();
 	update();
+
 }
+
+function stopFunc() {
+
+	arenaSweep();
+	playerReset();
+	clarTimeout();
+	update();
+}
+
+
