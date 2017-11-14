@@ -13,21 +13,33 @@
 			border: solid .2em #aeb6bf;
 			height: 90vh;
 		}
-
+		.buttons {
+			height: 400px;
+			width: 30vw;
+			float:left;
+			padding-top: 10vh;
+		}
 		button {
 			font-family: sans-serif;
 			font-size: 1em;
-			float: left;
 			text-align: center;
+		}
+		p {
+			font-size: 1em;
+			float: middle;
+			text-align: middle;
 		}
 
 	</style>
 </head>
 <body>
-	
-	<button onclick="clickFunc()" type="Button">Start</button>
-	<button onclick="playerReset()" type="Button">Restart</button>
 
+	<div class="buttons">
+      <button onclick="clickFunc()" type="Button">Start</button>
+	  <button onclick="resFunc()" type="Button">Restart</button>
+	  <button onclick="stopFunc()" type="Button">Stop</button>
+	  <p>Press Q to turn</p>
+    </div>
 	<div id="score"></div>
 	<canvas id="tetris" width="240" height="400"></canvas>
 	<script src="tetris.js"></script>
