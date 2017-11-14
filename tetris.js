@@ -119,7 +119,7 @@ function merge(arena, player) {
 			}
 		});
 	});
-}	
+}
 
 function playerDrop() {
 	player.pos.y++;
@@ -243,14 +243,14 @@ document.addEventListener('keydown', event => {
 	}
 });
 
-/*function resFunc() {
+function resFunc() {
 	// context.clearRect(pa.left, pa.top, pa.width, pa.height);
 	player.pos.y--;
 	merge(arena, player);
 	playerReset();
 	arenaSweep();
 	updateScore();
-} */
+} 
 
 
 function clickFunc() {
@@ -260,4 +260,3 @@ function clickFunc() {
 	updateScore();
 	update();
 }
-
