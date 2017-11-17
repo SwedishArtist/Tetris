@@ -243,6 +243,41 @@ document.addEventListener('keydown', event => {
 	}
 });
 
+let start = document.getElementById("start");
+start.addEventListener("click",startGame, false);
+
+let stop = document.getElementById("stop");
+start.addEventListener("click", stopGame, false);
+
+let reset = document.addEventListener("click", resetGame, false);
+
+function startGame(button) {
+gameID = setInterval("counter()", 10);
+	player.pos.y--;
+	merge(arena, player);
+	playerReset();
+	arenaSweep();
+	updateScore();
+}
+
+function stopGame(button) {
+clearInterval(gameID);
+	arenaSweep();
+	playerReset();
+	updateScore();
+	update();
+}
+
+function resetGame(button) {
+	arenaSweep();
+	playerReset();
+	updateScore();
+	update();
+
+}
+
+
+/*
 function resFunc() {
 	// context.clearRect(pa.left, pa.top, pa.width, pa.height);
 	player.pos.y--;
@@ -259,7 +294,6 @@ function clickFunc() {
 	playerReset();
 	updateScore();
 	update();
-
 }
 
 function stopFunc() {
@@ -269,5 +303,14 @@ function stopFunc() {
 	clarTimeout();
 	update();
 }
+
+document.addEventListener('stop', event => {
+	if (event.stop === onClick) {
+	document.stop();
+	} else if (event.restart === onClick) 
+	document.playerReset();
+});
+*/
+
 
 

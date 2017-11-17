@@ -15,11 +15,16 @@
 <body>
 
 	<div class="buttons">
-      <button onclick="clickFunc()" type="Button">Start</button>
-	  <button onclick="resFunc()" type="Button">Restart</button>
-	  <button onclick="stopFunc()" type="Button">Stop</button>
+      <button id="start">Start</button>
+	  <button id="stop">Stop</button>
+	  <button id="reset">Reset</button>
 	  <p>Press Q to turn</p>
-    </div>
+	</div>
+
+	<div class="title">
+	  <h2>Tetris</h2>
+	</div>
+    
 	<div id="score"></div>
 	<canvas id="tetris" width="240" height="400"></canvas>
 	<script src="tetris.js"></script>
