@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="UTF-8">
+	<title>info</title>
+	<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+	<h1>Infopage</h1>
+		
+		<li><a href="../index.html">Lobby</li>
+		<li><a href="../tetris.html">Tetris</a></li>
+		<li>Info</li>
+
+		<div class="tab-panels">
+		            <ul class="tabs">
+		                <li rel="panel1" class="active">What?</li>
+		                <li rel="panel2">When?</li>
+		                <li rel="panel3">Who?</li>
+		                <li rel="panel4">Why?</li>
+		            </ul>
+
+		            <div id="panel1" class="panel active">
+		                This is a website where you can play games.<br/>
+		                Just press whatever game you'd like to play in the lobby<br/>
+		            </div>
+		            <div id="panel2" class="panel">
+		                The project started on November 11, 2017.<br/>
+		            </div>
+		            <div id="panel3" class="panel">
+		                The website is programmed by two swedish students.<br/>
+		            </div>
+		            <div id="panel4" class="panel">
+		                To learn more about coding and programming.<br/>
+		                But mainly because we can.<br/>
+		            </div>
+		</div>
+
+	<script src="jquery.js"></script>
+
+	<script>
+		$(function() {
+
+    $('.tab-panels .tabs li').on('click', function() {
+
+        var $panel = $(this).closest('.tab-panels');
+
+        $panel.find('.tabs li.active').removeClass('active');
+        $(this).addClass('active');
+
+        //figure out which panel to show
+        var panelToShow = $(this).attr('rel');
+
+        //hide current panel
+        $panel.find('.panel.active').slideUp(300, showNextPanel);
+
+        //show next panel
+        function showNextPanel() {
+            $(this).removeClass('active');
+
+            $('#'+panelToShow).slideDown(300, function() {
+                $(this).addClass('active');
+            });
+        }
+    });
+
+
+});
+
+
+	</script>
+	
+</body>
+</html>
