@@ -260,7 +260,7 @@ function stopFunc() {
 function resetFunc() {
 	player.pos.y--;
 	merge(arena, player);
-	playerReset();
+	reset.location.reload(true);
 	arenaSweep();
 	updateScore();
 }
