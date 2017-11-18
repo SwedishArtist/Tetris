@@ -1,6 +1,12 @@
+/* @font-face {
+	font-family: neatFont;
+	src: url(sansation_light.woff);
+} */
+
 body {
   background: linear-gradient(#2874a6, #b7950b, #c39bd3);
   text-align: center;
+  font-family: Open Sans;
 }
 
 canvas {

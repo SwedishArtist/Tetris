@@ -26,7 +26,7 @@
 		                Just press whatever game you'd like to play in the lobby<br/>
 		            </div>
 		            <div id="panel2" class="panel">
-		                The project started on November 11, 2017.<br/>
+		                The project started on November 13, 2017.<br/>
 		            </div>
 		            <div id="panel3" class="panel">
 		                The website is programmed by two swedish students.<br/>
@@ -44,13 +44,13 @@
 
     $('.tab-panels .tabs li').on('click', function() {
 
-        var $panel = $(this).closest('.tab-panels');
+        let $panel = $(this).closest('.tab-panels');
 
         $panel.find('.tabs li.active').removeClass('active');
         $(this).addClass('active');
 
         //figure out which panel to show
-        var panelToShow = $(this).attr('rel');
+        let panelToShow = $(this).attr('rel');
 
         //hide current panel
         $panel.find('.panel.active').slideUp(300, showNextPanel);
