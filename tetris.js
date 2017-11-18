@@ -150,8 +150,8 @@ function playerReset() {
 		arena.forEach(row => row.fill(0));
 		player.score = 0;
 		updateScore();
-	}
-}
+	};
+};
 
 function playerRotate(dir) {
 	const pos = player.pos.x;
@@ -214,7 +214,7 @@ const colors = [
 	null,
 	'#ec7063',
 	'#2471a3',
-	'#8e44ad',
+	'#8e44ad', 
 	'#148f77',
 	'#f1c40f',
 	'orange',
@@ -243,16 +243,21 @@ document.addEventListener('keydown', event => {
 	}
 });
 
-let start = document.getElementById("start");
-start.addEventListener("click",startGame, false);
+function startFunc() {
+	arenaSweep();
+	playerReset();
+	updateScore();
+	update();
+}
 
-let stop = document.getElementById("stop");
-start.addEventListener("click", stopGame, false);
+function stopFunc() {
+	Pause();
+	arenaSweep();
+	updateScore();
+	update();
+}
 
-let reset = document.addEventListener("click", resetGame, false);
-
-function startGame(button) {
-gameID = setInterval("counter()", 10);
+function resetFunc() {
 	player.pos.y--;
 	merge(arena, player);
 	playerReset();
@@ -260,24 +265,9 @@ gameID = setInterval("counter()", 10);
 	updateScore();
 }
 
-function stopGame(button) {
-clearInterval(gameID);
-	arenaSweep();
-	playerReset();
-	updateScore();
-	update();
-}
-
-function resetGame(button) {
-	arenaSweep();
-	playerReset();
-	updateScore();
-	update();
-
-}
-
 
 /*
+
 function resFunc() {
 	// context.clearRect(pa.left, pa.top, pa.width, pa.height);
 	player.pos.y--;
@@ -311,6 +301,7 @@ document.addEventListener('stop', event => {
 	document.playerReset();
 });
 */
+
 
 
 
