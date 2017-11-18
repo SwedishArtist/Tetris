@@ -1,3 +1,26 @@
 body {
-  background: blue;
+  background: linear-gradient(#2874a6, #b7950b, #c39bd3);
+  text-align: center;
+}
+
+canvas {
+	border: 2px solid;
+	background: #1c2833;
+}
+
+ul {
+	color: white;
+	position: absolute;
+	bottom: 545px;
+	left: 400px;
+	z-index: 1;
+}
+
+h3 {
+	color: white;
+	position: absolute;
+	bottom: 675px;
+	left: 648px;
+	z-index: 1;
+
 }
