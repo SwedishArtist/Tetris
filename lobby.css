@@ -17,7 +17,7 @@ canvas {
 ul {
 	color: white;
 	position: absolute;
-	bottom: 545px;
+	bottom: 520px;
 	left: 400px;
 	z-index: 1;
 }
@@ -25,7 +25,7 @@ ul {
 h3 {
 	color: white;
 	position: absolute;
-	bottom: 675px;
+	bottom: 624px;
 	left: 648px;
 	z-index: 1;
 
