@@ -50,7 +50,7 @@ function createMatrix(w, h) {
 	return matrix;
 }
 
-// SKAPAR BITARNAS FORM.
+// SKAPAR OBJEKTENS FORM.
 
 function createPiece(type) {
 	if (type === 'T') {
@@ -123,6 +123,8 @@ function drawMatrix(matrix, offset) {
 	});
 }
 
+// SAMMANFOGAR BITARNA NÄR DE LANDAR.
+
 function merge(arena, player) {
 	player.matrix.forEach((row, y) => {
 		row.forEach((value, x) => {
@@ -132,6 +134,8 @@ function merge(arena, player) {
 		});
 	});
 }
+
+// GÖR SÅ ATT OBJEKTET RÖR SIG.
 
 function playerDrop() {
 	player.pos.y++;
@@ -152,6 +156,8 @@ function playerMove(dir) {
 	}
 }
 
+//GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD, GER POÄNG.
+
 function playerReset() {
 	const pieces = 'ILJOTSZ';
 	player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
@@ -164,6 +170,8 @@ function playerReset() {
 		updateScore();
 	}
 }
+
+// GÖR SÅ ATT OBJEKTET KAN ROTERA.
 
 function playerRotate(dir) {
 	const pos = player.pos.x;
@@ -201,6 +209,8 @@ function rotate(matrix, dir) {
 
 }
 
+// UPPDATERAR SIDAN.
+
 let dropCounter = 0;
 let dropInterval = 1000;
 
@@ -213,6 +223,8 @@ function update(time = 0) {
 	if (dropCounter > dropInterval) {
 		playerDrop();
 	}
+
+	// FÖRKLARAR I VILKET LÄGE SPELET BEFINNER SIG I.
 
 	if (gamestate === "playing") {
 			requestAnimationFrame(update);
@@ -230,6 +242,8 @@ function updateScore() {
 	document.getElementById('score').innerText = player.score;
 }
 
+// OBJEKTETS FÄRGER.
+
 const colors = [
 	null,
 	'#ec7063',
@@ -241,6 +255,8 @@ const colors = [
 	'#b03a2e',
 ];
 
+// SKAPAR SPELPLAN.
+
 const arena = createMatrix(12, 20);
 
 const player = {
@@ -248,6 +264,8 @@ const player = {
 	matrix: null,
 	score: 0,
 };
+
+// KNAPP-FUNKTION FÖR OBJEKTETS RÖRELSE.
 
 document.addEventListener('keydown', event => {
 	if (event.keyCode === 37) {
@@ -262,6 +280,8 @@ document.addEventListener('keydown', event => {
 		playerRotate(1);
 	}
 });
+
+// START, STOP OCH RESET KNAPPAR.
 
 function startFunc() {
 	arenaSweep();
