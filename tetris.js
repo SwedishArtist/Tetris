@@ -4,6 +4,8 @@ const startButton = document.getElementById('Button');
 
 context.scale(20, 20);
 
+// FÅR OBJEKTET ATT RÖRA SIG NERÅT.
+
 function arenaSweep() {
 	let rowCount = 1;
 	outer: for (let y = arena.length - 1; y > 0; --y) {
@@ -22,6 +24,8 @@ function arenaSweep() {
 	}
 }
 
+// HINDRAR OBJEKTET FRÅN ATT FLYGA UTANFÖR BANAN.
+
 function collide(arena, player) {
 	const [m, o] = [player.matrix, player.pos];
 	for (let y = 0; y < m.length; ++y) {
@@ -36,6 +40,8 @@ function collide(arena, player) {
 	return false;
 }
 
+// GÖR SÅ ATT OBJEKTEN PLOCKAS UT.
+
 function createMatrix(w, h) {
 	const matrix = [];
 	while (h--) {
@@ -43,6 +49,8 @@ function createMatrix(w, h) {
 	}
 	return matrix;
 }
+
+// SKAPAR BITARNAS FORM.
 
 function createPiece(type) {
 	if (type === 'T') {
@@ -90,6 +98,8 @@ function createPiece(type) {
 	}
 }
 
+// SKAPAR BAKGRUNDEN.
+
 function draw() {
 	context.fillStyle = '#000';
 	context.fillRect(0, 0, canvas.width, canvas.height);
@@ -97,6 +107,8 @@ function draw() {
 	drawMatrix(arena, {x: 0, y: 0});
 	drawMatrix(player.matrix, player.pos);
 }
+
+// RITAR VARJE FIGUR (OBJEKT).
 
 function drawMatrix(matrix, offset) {
 	matrix.forEach((row, y) => {
@@ -202,6 +214,14 @@ function update(time = 0) {
 		playerDrop();
 	}
 
+	if (gamestate === "playing") {
+			requestAnimationFrame(update);
+	} else if (event.clickgamestate === "paused") {
+			requestAnimationFrame(paused);
+	} else if (gamestate === "quit") {
+			requestAnimationFrame(quit);
+	}
+
 	draw();
 	requestAnimationFrame(update);
 }
@@ -247,15 +267,19 @@ function startFunc() {
 	arenaSweep();
 	playerReset();
 	updateScore();
+	gamestate = "playing";
 	update();
 }
+document.getElementById("start").addEventListener("click", startFunc, false);
 
 function stopFunc() {
 	Pause();
 	arenaSweep();
 	updateScore();
+	gamestate = "paused";
 	update();
 }
+document.getElementById("stop").addEventListener("click", stopFunc, false);
 
 function resetFunc() {
 	player.pos.y--;
@@ -263,7 +287,10 @@ function resetFunc() {
 	reset.location.reload(true);
 	arenaSweep();
 	updateScore();
+	gamestate = "guit";
+	update();
 }
+document.getElementById("reset").addEventListener("click", resetFunc, false);
 
 
 /*
