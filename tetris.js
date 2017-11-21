@@ -235,7 +235,7 @@ function update(time = 0) {
 	}
 
 	draw();
-	requestAnimationFrame(update);
+	// requestAnimationFrame(update);
 }
 
 function updateScore() {
