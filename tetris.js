@@ -4,7 +4,43 @@ const startButton = document.getElementById('Button');
 
 context.scale(20, 20);
 
+
 // FÅR OBJEKTET ATT RÖRA SIG NERÅT.
+
+function grid() {
+	context.strokeStyle = white;
+	context.lineWidth   = 4;
+	for (i=0; i <= 400; i=i+20 ) {
+		// context.beginPath();
+		context.moveTo(i, 0);
+		context.lineTo(i, 400);
+		context.draw()
+	}
+}
+
+function board() {
+	let bw = 240;
+	// Box height
+	let bh = 400;
+	// Padding
+	let p = 0;
+
+	for (var x = 0; x <= bw; x += 20) {
+        context.moveTo(0.5 + x + p, p);
+        context.lineTo(0.5 + x + p, bh + p);
+    }
+
+
+    for (var x = 0; x <= bh; x += 20) {
+        context.moveTo(p, 0.5 + x + p);
+        context.lineTo(bw + p, 0.5 + x + p);
+    }
+
+    context.strokeStyle = "white";
+    context.lineWidth = 4;
+    context.stroke();
+	
+} 
 
 function arenaSweep() {
 	let rowCount = 1;
@@ -103,6 +139,7 @@ function createPiece(type) {
 function draw() {
 	context.fillStyle = '#000';
 	context.fillRect(0, 0, canvas.width, canvas.height);
+	board();
 
 	drawMatrix(arena, {x: 0, y: 0});
 	drawMatrix(player.matrix, player.pos);
@@ -159,10 +196,10 @@ function playerMove(dir) {
 //GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD, GER POÄNG.
 
 function playerReset() {
-	const pieces = 'ILJOTSZ';
+	const pieces  = 'ILJOTSZ';
 	player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
-	player.pos.y = 0;
-	player.pos.x =  (arena[0].length / 2 | 0) -
+	player.pos.y  = 0;
+	player.pos.x  =  (arena[0].length / 2 | 0) -
 				    (player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
 		arena.forEach(row => row.fill(0));
