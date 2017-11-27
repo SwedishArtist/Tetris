@@ -215,6 +215,7 @@ let dropCounter = 0;
 let dropInterval = 1000;
 
 let lastTime = 0;
+
 function update(time = 0) {
 	const deltaTime = time - lastTime;
 	lastTime = time;
@@ -281,15 +282,13 @@ document.addEventListener('keydown', event => {
 	}
 });
 
-// START, STOP OCH RESET KNAPPAR.
-
+// START, STOP OCH RESET KNAPPAR
 function startFunc() {
 	arenaSweep();
 	playerReset();
 	updateScore();
 	gamestate = "playing";
 	update();
-	debugger
 }
 document.getElementById("start").addEventListener("click", startFunc, false);
 
