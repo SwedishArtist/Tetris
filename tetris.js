@@ -289,6 +289,7 @@ function startFunc() {
 	updateScore();
 	gamestate = "playing";
 	update();
+	debugger
 }
 document.getElementById("start").addEventListener("click", startFunc, false);
 

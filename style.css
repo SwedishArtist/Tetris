@@ -31,10 +31,15 @@ p {
 ul {
 	background: linear-gradient(45deg, #45b39d, #58d68d);
 	position: fixed;
+	list-style-type: initial;
 	top: 275px;
 	width: 100px;
 	height: 300px;
 	border: 2px solid #a3e4d7;
+}
+
+li {
+	text-align: center;
 }
 
 canvas {
