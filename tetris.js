@@ -5,7 +5,7 @@ const startButton = document.getElementById('Button');
 context.scale(20, 20);
 
 
-// FÅR OBJEKTET ATT RÖRA SIG NERÅT.
+
 
 function grid() {
 	context.strokeStyle = white;
@@ -41,6 +41,8 @@ function board() {
     context.stroke();
 	
 } 
+
+// FÅR OBJEKTET ATT RÖRA SIG NERÅT.
 
 function arenaSweep() {
 	let rowCount = 1;
@@ -205,6 +207,7 @@ function playerReset() {
 		arena.forEach(row => row.fill(0));
 		player.score = 0;
 		updateScore();
+		scoreCount();
 	}
 }
 
@@ -264,11 +267,13 @@ function update(time = 0) {
 
 	// FÖRKLARAR I VILKET LÄGE SPELET BEFINNER SIG I.
 
-	if (gamestate === "playing") {
+buttons() {
+
+	if (onclick.gamestate === "playing") {
 			requestAnimationFrame(update);
-	} else if (event.clickgamestate === "paused") {
+	} else if (onclick.gamestate === "paused") {
 			requestAnimationFrame(paused);
-	} else if (gamestate === "quit") {
+	} else if (onclick.gamestate === "quit") {
 			requestAnimationFrame(quit);
 	}
 
@@ -278,6 +283,10 @@ function update(time = 0) {
 
 function updateScore() {
 	document.getElementById('score').innerText = player.score;
+}
+
+function countScore() {
+	document,getElementById('scoreSave').innerText = player.score;
 }
 
 // OBJEKTETS FÄRGER.
@@ -318,6 +327,9 @@ document.addEventListener('keydown', event => {
 		playerRotate(1);
 	}
 });
+
+
+
 
 // START, STOP OCH RESET KNAPPAR
 function startFunc() {
