@@ -5,8 +5,6 @@ const startButton = document.getElementById('Button');
 context.scale(20, 20);
 
 
-
-
 function grid() {
 	context.strokeStyle = white;
 	context.lineWidth   = 4;
@@ -14,31 +12,34 @@ function grid() {
 		// context.beginPath();
 		context.moveTo(i, 0);
 		context.lineTo(i, 400);
-		context.draw()
+		context.draw();
 	}
 }
 
 function board() {
+	context.save();
+	context.beginPath();
+	context.strokeStyle = 'white';
+	context.lineWidth = 2;
 	let bw = 240;
 	// Box height
 	let bh = 400;
 	// Padding
 	let p = 0;
 
-	for (var x = 0; x <= bw; x += 20) {
-        context.moveTo(0.5 + x + p, p);
-        context.lineTo(0.5 + x + p, bh + p);
-    }
-
-
-    for (var x = 0; x <= bh; x += 20) {
-        context.moveTo(p, 0.5 + x + p);
-        context.lineTo(bw + p, 0.5 + x + p);
-    }
-
-    context.strokeStyle = "white";
-    context.lineWidth = 4;
-    context.stroke();
+	for (i = 0; i <= bw; i += 20) {
+		context.moveTo(i + p, p);
+		context.lineTo(i + p, bh + p);
+		// console.log(i+p, bh+p);
+		context.strokeStyle = 'rgb(' + i*10+ ',' + i * 10 + ', 100)';
+		context.stroke();
+	}
+	for (i = 0; i <= bh; i += 20) {
+		context.moveTo(p, 0.5 + i + p);
+		context.lineTo(bw + p, 0.5 + i + p);
+	}
+	//context.stroke();
+    context.restore();
 	
 } 
 
@@ -150,6 +151,7 @@ function draw() {
 // RITAR VARJE FIGUR (OBJEKT).
 
 function drawMatrix(matrix, offset) {
+	// console.log(matrix);
 	matrix.forEach((row, y) => {
 		row.forEach((value, x) => {
 			if (value !== 0) {
@@ -267,7 +269,6 @@ function update(time = 0) {
 
 	// FÖRKLARAR I VILKET LÄGE SPELET BEFINNER SIG I.
 
-buttons() {
 
 	if (onclick.gamestate === "playing") {
 			requestAnimationFrame(update);
@@ -278,6 +279,7 @@ buttons() {
 	}
 
 	draw();
+	
 	// requestAnimationFrame(update);
 }
 
@@ -336,19 +338,19 @@ function startFunc() {
 	arenaSweep();
 	playerReset();
 	updateScore();
-	gamestate = "playing";
+	gamestate = 'playing';
 	update();
 }
-document.getElementById("start").addEventListener("click", startFunc, false);
+document.getElementById('start').addEventListener('click', startFunc, false);
 
 function stopFunc() {
 	Pause();
 	arenaSweep();
 	updateScore();
-	gamestate = "paused";
+	gamestate = 'paused';
 	update();
 }
-document.getElementById("stop").addEventListener("click", stopFunc, false);
+document.getElementById('stop').addEventListener('click', stopFunc, false);
 
 function resetFunc() {
 	player.pos.y--;
@@ -356,10 +358,10 @@ function resetFunc() {
 	reset.location.reload(true);
 	arenaSweep();
 	updateScore();
-	gamestate = "guit";
+	gamestate = 'guit';
 	update();
 }
-document.getElementById("reset").addEventListener("click", resetFunc, false);
+document.getElementById('reset').addEventListener('click', resetFunc, false);
 
 
 /*
