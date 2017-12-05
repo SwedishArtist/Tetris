@@ -270,11 +270,11 @@ function update(time = 0) {
 	// FÖRKLARAR I VILKET LÄGE SPELET BEFINNER SIG I.
 
 
-	if (onclick.gamestate === "playing") {
+	if (gamestate === "playing") {
 			requestAnimationFrame(update);
-	} else if (onclick.gamestate === "paused") {
+	} else if (gamestate === "paused") {
 			requestAnimationFrame(paused);
-	} else if (onclick.gamestate === "quit") {
+	} else if (gamestate === "quit") {
 			requestAnimationFrame(quit);
 	}
 
@@ -339,6 +339,7 @@ function startFunc() {
 	playerReset();
 	updateScore();
 	gamestate = 'playing';
+	debugger;
 	update();
 }
 document.getElementById('start').addEventListener('click', startFunc, false);
