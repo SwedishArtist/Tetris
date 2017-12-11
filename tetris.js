@@ -1,6 +1,7 @@
 const canvas      = document.getElementById('tetris');
 const context     = canvas.getContext('2d');
 const startButton = document.getElementById('Button');
+let highArr       = [];
 
 context.scale(20, 20);
 
@@ -197,6 +198,33 @@ function playerMove(dir) {
 	}
 }
 
+// SKAPAR UL
+
+function arrToUl(root, arr) {
+  let ul = document.createElement('ul');
+  let li;
+  
+  root.appendChild(ul); // append the created ul to the root
+
+  arr.forEach(function(item) {
+    if (Array.isArray(item)) { // if it's an array
+      arrToUl(li, item); // call arrToUl with the li as the root
+      return;
+    }
+    
+    li = document.createElement('li'); // create a new list item
+    li.appendChild(document.createTextNode(item)); // append the text to the li
+    ul.appendChild(li); // append the list item to the ul
+  });
+}
+
+var div = document.getElementById('myList');
+
+
+
+
+
+
 //GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD, GER POÄNG.
 
 function playerReset() {
@@ -207,9 +235,15 @@ function playerReset() {
 				    (player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
 		arena.forEach(row => row.fill(0));
+		highArr.push(player.score);
+		highArr.sort(function(a, b) {
+			return b - a
+	});
+		arrToUl(div, highArr);
 		player.score = 0;
 		updateScore();
-		scoreCount();
+		// scoreCount();
+		// console.log(highArr);
 	}
 }
 
@@ -339,7 +373,6 @@ function startFunc() {
 	playerReset();
 	updateScore();
 	gamestate = 'playing';
-	debugger;
 	update();
 }
 document.getElementById('start').addEventListener('click', startFunc, false);
