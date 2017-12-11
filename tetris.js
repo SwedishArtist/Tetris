@@ -218,7 +218,7 @@ function arrToUl(root, arr) {
   });
 }
 
-var div = document.getElementById('myList');
+let div = document.getElementById('myList');
 
 
 
