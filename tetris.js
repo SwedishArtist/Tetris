@@ -304,7 +304,7 @@ const colors = [
 	'#b03a2e',
 ];
 
-// SKAPAR SPELPLAN.
+// SKAPAR SPELPLAN OCH PÅBÖRJAR RÄKNING AV POÄNGEN.
 
 const arena = createMatrix(12, 20);
 
@@ -333,13 +333,13 @@ document.addEventListener('keydown', event => {
 
 
 
+
 // START, STOP OCH RESET KNAPPAR
 function startFunc() {
 	arenaSweep();
 	playerReset();
 	updateScore();
 	gamestate = 'playing';
-	debugger;
 	update();
 }
 document.getElementById('start').addEventListener('click', startFunc, false);
