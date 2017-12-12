@@ -2,6 +2,7 @@ const canvas      = document.getElementById('tetris');
 const context     = canvas.getContext('2d');
 const startButton = document.getElementById('Button');
 let highArr       = [];
+let gamestate     = 'quit'
 
 context.scale(20, 20);
 
@@ -225,7 +226,7 @@ let div = document.getElementById('myList');
 
 
 
-//GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD, GER POÄNG.
+// GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD(?), GER POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD
 
 function playerReset() {
 	const pieces  = 'ILJOTSZ';
@@ -239,6 +240,7 @@ function playerReset() {
 		highArr.sort(function(a, b) {
 			return b - a
 	});
+		highArr.length = 5;
 		arrToUl(div, highArr);
 		player.score = 0;
 		updateScore();
@@ -285,12 +287,13 @@ function rotate(matrix, dir) {
 
 }
 
-// UPPDATERAR SIDAN.
 
-let dropCounter = 0;
+
+let dropCounter  = 0;
 let dropInterval = 1000;
 
 let lastTime = 0;
+// UPPDATERAR SIDAN.
 
 function update(time = 0) {
 	const deltaTime = time - lastTime;
@@ -306,11 +309,7 @@ function update(time = 0) {
 
 	if (gamestate === "playing") {
 			requestAnimationFrame(update);
-	} else if (gamestate === "paused") {
-			requestAnimationFrame(paused);
-	} else if (gamestate === "quit") {
-			requestAnimationFrame(quit);
-	}
+	} 
 
 	draw();
 	
@@ -368,36 +367,46 @@ document.addEventListener('keydown', event => {
 
 
 // START, STOP OCH RESET KNAPPAR
+
 function startFunc() {
+	if (gamestate === 'paused') {
+		gamestate = 'playing';
+		update();
+	} else if (gamestate === 'quit') {
 	arenaSweep();
 	playerReset();
 	updateScore();
 	gamestate = 'playing';
 	update();
+	}
+	
 }
 document.getElementById('start').addEventListener('click', startFunc, false);
 
 function stopFunc() {
-	Pause();
-	arenaSweep();
-	updateScore();
 	gamestate = 'paused';
-	update();
 }
 document.getElementById('stop').addEventListener('click', stopFunc, false);
 
 function resetFunc() {
-	player.pos.y--;
+	/* player.pos.y--;
 	merge(arena, player);
 	reset.location.reload(true);
 	arenaSweep();
 	updateScore();
 	gamestate = 'guit';
-	update();
+	update(); */
+	arenaSweep();
+	playerReset();
+	updateScore();
+
 }
 document.getElementById('reset').addEventListener('click', resetFunc, false);
 
-
+function lobby() {
+	document.location.href = 'index.html';
+}
+document.getElementById('lobby').addEventListener('click', lobby, false);
 /*
 
 function resFunc() {
