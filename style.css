@@ -55,5 +55,10 @@ h2 {
 	bottom: 600px;
 }
 
+#myList {
+	z-index: 5;
+	top: 50%;
+	left: 50%;
+}
 
 
