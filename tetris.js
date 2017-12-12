@@ -337,7 +337,7 @@ const colors = [
 	'#b03a2e',
 ];
 
-// SKAPAR SPELPLAN.
+// SKAPAR SPELPLAN OCH PÅBÖRJAR RÄKNING AV POÄNGEN.
 
 const arena = createMatrix(12, 20);
 
@@ -362,6 +362,7 @@ document.addEventListener('keydown', event => {
 		playerRotate(1);
 	}
 });
+
 
 
 
