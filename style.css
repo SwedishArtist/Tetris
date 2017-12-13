@@ -6,13 +6,17 @@ body {
 	text-align: center;
 }
 
+a {
+	text-decoration: none;
+}
+
 canvas {
 	border: solid .2em #aeb6bf;
 	height: 90vh;
 }
 
 button {
-	font-family: sans-serif;
+	font-family: Open sans;
 	font-size: 1em;
 	float: left;
 	text-align: center;
@@ -36,6 +40,39 @@ p {
 	width: 100px;
 	height: 300px;
 	border: 2px solid #a3e4d7;
+}
+
+.altButton {
+	border-top: 1px solid #96d1f8;
+	background: #5684a3;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#5684a3));
+    background: -webkit-linear-gradient(top, #3e779d, #5684a3);
+    background: -moz-linear-gradient(top, #3e779d, #5684a3);
+    background: -ms-linear-gradient(top, #3e779d, #5684a3);
+    background: -o-linear-gradient(top, #3e779d, #5684a3);
+    padding: 7px 14px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.altButton:hover {
+	border-top-color: #28597a;
+   	background: #28597a;
+    color: #ccc;
+}
+
+.altButton:active {
+	border-top-color: #1b435e;
+	background: #1b435e;
 }
 
 li {
