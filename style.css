@@ -91,11 +91,12 @@ canvas {
 	position: absolute;
 	bottom: 400px;
 	right: 6.5%;
+	background-color: black;
 }
 
 h2 {
 	border: 1px solid;
-	bottom: 600px;
+	bottom: 90%;
 	float: right;
 	right: 50px;
 }
