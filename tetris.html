@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Lobby</title>
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans">
 </head>
 
 	<ul id="links" >
@@ -11,17 +12,26 @@
 		<li>Tetris</li>
 		<li><a href="info/index.html">info</a></li>
 	</ul>
-
 <body>
 
 	<!-- button-functionerna kallar på dessa -->
 
 	<div class="button">
       <button id="start">Start</button>
-	  <button id="stop">Stop</button>
-	  <button id="reset">Reset</button>
-	  <p>Press Q to turn</p>
+	  <button id="stop">Pause</button>
+	  <button id="reset">Restart</button>
+	  <button id="lobby">Back to lobby</button>
 	</div>
+
+	<div class="text">
+		<p>Press Q to turn</p>
+	</div>
+
+	<a href="index.html">
+		<div class="altButton">
+			Back to lobby
+		</div>
+	</a>
 
 
 	<div id="myList">
