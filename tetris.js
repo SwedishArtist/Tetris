@@ -200,8 +200,10 @@ function playerMove(dir) {
 }
 
 // SKAPAR UL
-
+let div = document.getElementById('myList');
+console.log(getElementById("myList", "ul"))
 function arrToUl(root, arr) {
+  document.getElementById("myList", "ul").remove();
   let ul = document.createElement('ul');
   let li;
   
@@ -219,14 +221,24 @@ function arrToUl(root, arr) {
   });
 }
 
-let div = document.getElementById('myList');
+// ÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖ
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(let i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
 
 
 
 
 
-
-// GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD(?), GER POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD
+// GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD(? TVIVLAR STARKT PÅ DET), GER POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. SKAPAR BITAR
 
 function playerReset() {
 	const pieces  = 'ILJOTSZ';
@@ -324,7 +336,7 @@ function countScore() {
 	document,getElementById('scoreSave').innerText = player.score;
 }
 
-// OBJEKTETS FÄRGER.
+// BITARNAS FÄRGER.
 
 const colors = [
 	null,
