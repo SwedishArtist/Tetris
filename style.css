@@ -89,16 +89,17 @@ canvas {
 #myList {
 	border: 1px solid;
 	position: absolute;
-	bottom: 400px;
+	top: 20%;
 	right: 6.5%;
 	background-color: black;
+	width: 200px;
 }
 
 h2 {
 	border: 1px solid;
 	bottom: 90%;
-	float: right;
 	right: 50px;
 }
+
 
 
