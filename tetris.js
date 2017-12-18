@@ -16,12 +16,12 @@ function grid() {
 		context.lineTo(i, 400);
 		context.draw();
 	}
-} */
-
+} 
+*/
 function board() {
 	context.save();
 	context.beginPath();
-	context.strokeStyle = 'white';
+	context.strokeStyle = '#34495e';
 	context.lineWidth = 1;
 	context.scale(1/20, 1/20);
 	let bw = 240;
@@ -32,7 +32,7 @@ function board() {
 		context.moveTo(i + p, p);
 		context.lineTo(i + p, bh + p);
 		// console.log(i+p, bh+p);
-		context.strokeStyle = 'rgb(' + i*10+ ',' + i * 10 + ', 100)';
+		context.strokeStyle = i*10+ ',' + i * 10 + ', 100)';  // 'rgb(' + 
 		context.stroke();
 	}
 	for (i = 0; i <= bh; i += 20) {
