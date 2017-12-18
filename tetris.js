@@ -391,7 +391,6 @@ function startFunc() {
 		update();
 	} else if (gamestate === 'quit') {
 	arenaSweep();
-	playerReset();
 	updateScore();
 	gamestate = 'playing';
 	update();
