@@ -23,6 +23,7 @@ function board() {
 	context.beginPath();
 	context.strokeStyle = 'white';
 	context.lineWidth = 2;
+	context.scale(1/20, 1/20);
 	let bw = 240;
 	// Box height
 	let bh = 400;
@@ -201,8 +202,10 @@ function playerMove(dir) {
 
 // SKAPAR UL
 let div = document.getElementById('myList');
-console.log(getElementById("myList", "ul"))
+
 function arrToUl(root, arr) {
+	let tst = document.getElementById("myList", "ul")
+  console.log(tst)
   document.getElementById("myList", "ul").remove();
   let ul = document.createElement('ul');
   let li;
@@ -247,6 +250,7 @@ function playerReset() {
 	player.pos.x  =  (arena[0].length / 2 | 0) -
 				    (player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
+		debugger;
 		arena.forEach(row => row.fill(0));
 		highArr.push(player.score);
 		highArr.sort(function(a, b) {
