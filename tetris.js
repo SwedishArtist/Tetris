@@ -6,7 +6,7 @@ let gamestate     = 'quit'
 
 context.scale(20, 20);
 
-
+/*
 function grid() {
 	context.strokeStyle = white;
 	context.lineWidth   = 4;
@@ -16,18 +16,16 @@ function grid() {
 		context.lineTo(i, 400);
 		context.draw();
 	}
-}
+} */
 
 function board() {
 	context.save();
 	context.beginPath();
 	context.strokeStyle = 'white';
-	context.lineWidth = 2;
+	context.lineWidth = 1;
 	context.scale(1/20, 1/20);
 	let bw = 240;
-	// Box height
 	let bh = 400;
-	// Padding
 	let p = 0;
 
 	for (i = 0; i <= bw; i += 20) {
@@ -41,7 +39,7 @@ function board() {
 		context.moveTo(p, 0.5 + i + p);
 		context.lineTo(bw + p, 0.5 + i + p);
 	}
-	//context.stroke();
+	context.stroke();
     context.restore();
 	
 } 
@@ -250,7 +248,7 @@ function playerReset() {
 	player.pos.x  =  (arena[0].length / 2 | 0) -
 				    (player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
-		debugger;
+		// debugger;
 		arena.forEach(row => row.fill(0));
 		highArr.push(player.score);
 		highArr.sort(function(a, b) {
@@ -282,6 +280,7 @@ function playerRotate(dir) {
 	}
 }
 
+// ROTERAR
 function rotate(matrix, dir) {
 	for (let y = 0; y < matrix.length; ++y) {
 		for (let x = 0; x < y; ++x) {
