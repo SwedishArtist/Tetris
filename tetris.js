@@ -234,7 +234,19 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     }
 }
 
+// ÄNDRA PLAYER RESET OM DENNA ÄNDRAS
 
+function restartSweep() {
+			arena.forEach(row => row.fill(0));
+		highArr.push(player.score);
+		highArr.sort(function(a, b) {
+			return b - a
+	});
+		highArr.length = 5;
+		arrToUl(div, highArr);
+		player.score = 0;
+		updateScore();
+}
 
 
 
@@ -384,12 +396,13 @@ document.addEventListener('keydown', event => {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
-	debugger;
+	// debugger;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		update();
 	} else if (gamestate === 'quit') {
 	// arenaSweep();
+	playerReset();
 	updateScore();
 	gamestate = 'playing';
 	update();
@@ -399,7 +412,13 @@ function startFunc() {
 document.getElementById('start').addEventListener('click', startFunc, false);
 
 function stopFunc() {
-	gamestate = 'paused';
+	if (gamestate === 'paused') {
+		gamestate = 'playing';
+		update(); 
+	} else {
+		gamestate = 'paused';
+	}
+	
 }
 document.getElementById('stop').addEventListener('click', stopFunc, false);
 
@@ -411,10 +430,12 @@ function resetFunc() {
 	updateScore();
 	gamestate = 'guit';
 	update(); */
+	restartSweep();
 	arenaSweep();
 	playerReset();
+	reset.location.reload(true);
 	updateScore();
-
+	update();
 }
 document.getElementById('reset').addEventListener('click', resetFunc, false);
 
