@@ -31,8 +31,7 @@ function board() {
 	for (i = 0; i <= bw; i += 20) {
 		context.moveTo(i + p, p);
 		context.lineTo(i + p, bh + p);
-		// console.log(i+p, bh+p);
-		context.strokeStyle = i*10+ ',' + i * 10 + ', 100)';  // 'rgb(' + 
+		// context.strokeStyle = 'rgb(' + i*10+ ',' + i * 10 + ', 100)';  
 		context.stroke();
 	}
 	for (i = 0; i <= bh; i += 20) {
@@ -385,11 +384,12 @@ document.addEventListener('keydown', event => {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
+	debugger;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		update();
 	} else if (gamestate === 'quit') {
-	arenaSweep();
+	// arenaSweep();
 	updateScore();
 	gamestate = 'playing';
 	update();
