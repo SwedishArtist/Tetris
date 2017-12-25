@@ -6,6 +6,7 @@ Tetris:
 * Byta namn på start (eller pause) till continue när speler är pausat
 * Fixa highscorelisten
 * Skriva pause när spelet är pausat
+* placera "Paused" i mitten av sidan (reglerna appliceras inte)
 
 Lobby:
 * Lägg till olika teman (som länkar olika CSS filer)

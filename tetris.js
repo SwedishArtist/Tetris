@@ -201,9 +201,11 @@ function playerMove(dir) {
 let div = document.getElementById('myList');
 
 function arrToUl(root, arr) {
-	let tst = document.getElementById("myList", "ul")
-  console.log(tst)
-  document.getElementById("myList", "ul").remove();
+	let myNode = document.getElementById("myList");
+	while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+}
+
   let ul = document.createElement('ul');
   let li;
   
@@ -222,7 +224,7 @@ function arrToUl(root, arr) {
 }
 
 // ÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖ
-
+/*
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
@@ -232,7 +234,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
             this[i].parentElement.removeChild(this[i]);
         }
     }
-}
+} */
 
 // ÄNDRA PLAYER RESET OM DENNA ÄNDRAS
 
@@ -259,7 +261,6 @@ function playerReset() {
 	player.pos.x  =  (arena[0].length / 2 | 0) -
 				    (player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
-		// debugger;
 		arena.forEach(row => row.fill(0));
 		highArr.push(player.score);
 		highArr.sort(function(a, b) {
@@ -391,7 +392,14 @@ document.addEventListener('keydown', event => {
 
 
 
-
+function togglePause() {
+	let p = document.getElementById('paused');
+	if (gamestate === 'paused') {
+        p.style.display = 'block';
+    } else {
+        p.style.display = 'none';
+    }
+}
 
 // START, STOP OCH RESET KNAPPAR
 
@@ -415,10 +423,12 @@ function stopFunc() {
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		status = 'Pause'
+		togglePause();
 		update(); 
 	} else {
 		gamestate = 'paused';
 		status = 'Unpause'
+		togglePause();
 	}
 	document.getElementById('stop').innerHTML = status	
 }
