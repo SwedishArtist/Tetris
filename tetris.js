@@ -412,24 +412,20 @@ function startFunc() {
 document.getElementById('start').addEventListener('click', startFunc, false);
 
 function stopFunc() {
+	let status = undefined;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
+		status = 'Pause'
 		update(); 
 	} else {
 		gamestate = 'paused';
+		status = 'Unpause'
 	}
-	
+	document.getElementById('stop').innerHTML = status	
 }
 document.getElementById('stop').addEventListener('click', stopFunc, false);
 
 function resetFunc() {
-	/* player.pos.y--;
-	merge(arena, player);
-	reset.location.reload(true);
-	arenaSweep();
-	updateScore();
-	gamestate = 'guit';
-	update(); */
 	restartSweep();
 	arenaSweep();
 	playerReset();
