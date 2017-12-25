@@ -396,7 +396,6 @@ document.addEventListener('keydown', event => {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
-	// debugger;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		update();
@@ -439,6 +438,8 @@ function lobby() {
 	document.location.href = 'index.html';
 }
 document.getElementById('lobby').addEventListener('click', lobby, false);
+
+
 /*
 
 function resFunc() {
