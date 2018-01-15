@@ -1,23 +1,12 @@
 const canvas      = document.getElementById('tetris');
 const context     = canvas.getContext('2d');
-const startButton = document.getElementById('Button');
+const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
-let gamestate     = 'quit'
+let gamestate     = 'quit';
 
 context.scale(20, 20);
 
-/*
-function grid() {
-	context.strokeStyle = white;
-	context.lineWidth   = 4;
-	for (i=0; i <= 400; i=i+20 ) {
-		// context.beginPath();
-		context.moveTo(i, 0);
-		context.lineTo(i, 400);
-		context.draw();
-	}
-} 
-*/
+
 function board() {
 	context.save();
 	context.beginPath();
@@ -28,18 +17,18 @@ function board() {
 	let bh = 400;
 	let p = 0;
 
-	for (i = 0; i <= bw; i += 20) {
+	for (let i = 0; i <= bw; i += 20) {
 		context.moveTo(i + p, p);
 		context.lineTo(i + p, bh + p);
 		// context.strokeStyle = 'rgb(' + i*10+ ',' + i * 10 + ', 100)';  
 		context.stroke();
 	}
-	for (i = 0; i <= bh; i += 20) {
+	for (let i = 0; i <= bh; i += 20) {
 		context.moveTo(p, 0.5 + i + p);
 		context.lineTo(bw + p, 0.5 + i + p);
 	}
 	context.stroke();
-    context.restore();
+	context.restore();
 	
 } 
 
@@ -79,7 +68,7 @@ function collide(arena, player) {
 	return false;
 }
 
-// GÖR SÅ ATT OBJEKTEN PLOCKAS UT.
+// SKAPAR ARENAN
 
 function createMatrix(w, h) {
 	const matrix = [];
@@ -157,8 +146,8 @@ function drawMatrix(matrix, offset) {
 			if (value !== 0) {
 				context.fillStyle = colors[value];
 				context.fillRect(x + offset.x, 
-				             y + offset.y, 
-				             1, 1);
+							y + offset.y, 
+							1, 1);
 			}
 		});
 	});
@@ -201,26 +190,26 @@ function playerMove(dir) {
 let div = document.getElementById('myList');
 
 function arrToUl(root, arr) {
-	let myNode = document.getElementById("myList");
+	let myNode = document.getElementById('myList');
 	while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
-}
+		myNode.removeChild(myNode.firstChild);
+	}
 
-  let ul = document.createElement('ul');
-  let li;
+	let ul = document.createElement('ul');
+	let li;
   
-  root.appendChild(ul); // append the created ul to the root
+	root.appendChild(ul); // append the created ul to the root
 
-  arr.forEach(function(item) {
-    if (Array.isArray(item)) { // if it's an array
-      arrToUl(li, item); // call arrToUl with the li as the root
-      return;
-    }
+	arr.forEach(function(item) {
+		if (Array.isArray(item)) { // if it's an array
+			arrToUl(li, item); // call arrToUl with the li as the root
+			return;
+		}
     
-    li = document.createElement('li'); // create a new list item
-    li.appendChild(document.createTextNode(item)); // append the text to the li
-    ul.appendChild(li); // append the list item to the ul
-  });
+		li = document.createElement('li'); // create a new list item
+		li.appendChild(document.createTextNode(item)); // append the text to the li
+		ul.appendChild(li); // append the list item to the ul
+	});
 }
 
 // ÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖ
@@ -239,15 +228,15 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 // ÄNDRA PLAYER RESET OM DENNA ÄNDRAS
 
 function restartSweep() {
-			arena.forEach(row => row.fill(0));
-		highArr.push(player.score);
-		highArr.sort(function(a, b) {
-			return b - a
+	arena.forEach(row => row.fill(0));
+	highArr.push(player.score);
+	highArr.sort(function(a, b) {
+		return b - a;
 	});
-		highArr.length = 5;
-		arrToUl(div, highArr);
-		player.score = 0;
-		updateScore();
+	highArr.length = 5;
+	arrToUl(div, highArr);
+	player.score = 0;
+	updateScore();
 }
 
 
@@ -259,13 +248,13 @@ function playerReset() {
 	player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
 	player.pos.y  = 0;
 	player.pos.x  =  (arena[0].length / 2 | 0) -
-				    (player.matrix[0].length / 2 | 0);
+					(player.matrix[0].length / 2 | 0);
 	if (collide(arena, player)) {
 		arena.forEach(row => row.fill(0));
 		highArr.push(player.score);
 		highArr.sort(function(a, b) {
-			return b - a
-	});
+			return b - a;
+		});
 		highArr.length = 5;
 		arrToUl(div, highArr);
 		player.score = 0;
@@ -334,22 +323,17 @@ function update(time = 0) {
 	// FÖRKLARAR I VILKET LÄGE SPELET BEFINNER SIG I.
 
 
-	if (gamestate === "playing") {
-			requestAnimationFrame(update);
+	if (gamestate === 'playing') {
+		requestAnimationFrame(update);
 	} 
 
 	draw();
-	
-	// requestAnimationFrame(update);
 }
 
 function updateScore() {
 	document.getElementById('score').innerText = player.score;
 }
 
-function countScore() {
-	document,getElementById('scoreSave').innerText = player.score;
-}
 
 // BITARNAS FÄRGER.
 
@@ -366,7 +350,7 @@ const colors = [
 
 // SKAPAR SPELPLAN OCH PÅBÖRJAR RÄKNING AV POÄNGEN.
 
-const arena = createMatrix(12, 20);
+const arena = createMatrix(12, 20); // Kan man kalla den här som funktion eller göra en modifierad funktion som sätter alla slots till 0 för att undvika buggar?
 
 const player = {
 	pos: {x: 0, y: 0},
@@ -395,10 +379,10 @@ document.addEventListener('keydown', event => {
 function togglePause() {
 	let p = document.getElementById('paused');
 	if (gamestate === 'paused') {
-        p.style.display = 'block';
-    } else {
-        p.style.display = 'none';
-    }
+		p.style.display = 'block';
+	} else {
+		p.style.display = 'none';
+	}
 }
 
 // START, STOP OCH RESET KNAPPAR
@@ -409,10 +393,10 @@ function startFunc() {
 		update();
 	} else if (gamestate === 'quit') {
 	// arenaSweep();
-	playerReset();
-	updateScore();
-	gamestate = 'playing';
-	update();
+		playerReset();
+		updateScore();
+		gamestate = 'playing';
+		update();
 	}
 	
 }
@@ -422,15 +406,15 @@ function stopFunc() {
 	let status = undefined;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
-		status = 'Pause'
+		status = 'Pause';
 		togglePause();
 		update(); 
 	} else {
 		gamestate = 'paused';
-		status = 'Unpause'
+		status = 'Unpause';
 		togglePause();
 	}
-	document.getElementById('stop').innerHTML = status	
+	document.getElementById('stop').innerHTML = status;	
 }
 document.getElementById('stop').addEventListener('click', stopFunc, false);
 
@@ -438,8 +422,10 @@ function resetFunc() {
 	restartSweep();
 	arenaSweep();
 	playerReset();
-	reset.location.reload(true);
 	updateScore();
+	player.pos.y  = 0;
+	player.pos.x  =  (arena[0].length / 2 | 0) -
+					(player.matrix[0].length / 2 | 0);
 	update();
 }
 document.getElementById('reset').addEventListener('click', resetFunc, false);
@@ -448,45 +434,3 @@ function lobby() {
 	document.location.href = 'index.html';
 }
 document.getElementById('lobby').addEventListener('click', lobby, false);
-
-
-/*
-
-function resFunc() {
-	// context.clearRect(pa.left, pa.top, pa.width, pa.height);
-	player.pos.y--;
-	merge(arena, player);
-	playerReset();
-	arenaSweep();
-	updateScore();
-} 
-
-
-function clickFunc() {
-	// context.clearRect(pa.left, pa.top, pa.width, pa.height);
-	arenaSweep();
-	playerReset();
-	updateScore();
-	update();
-}
-
-function stopFunc() {
-
-	arenaSweep();
-	playerReset();
-	clarTimeout();
-	update();
-}
-
-document.addEventListener('stop', event => {
-	if (event.stop === onClick) {
-	document.stop();
-	} else if (event.restart === onClick) 
-	document.playerReset();
-});
-*/
-
-
-
-
-// TJHOSAN

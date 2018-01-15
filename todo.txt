@@ -1,12 +1,20 @@
 ﻿TODO:
 
+Allmänt:
+* Lägg till språk
+* Organisera och snygga till
+* Lägga till ljudeffekter, t.ex. knapparna.
+
 Tetris:
-* Få restart att fungera
 * Skriva CSS till de alternativa knapparna
-* Byta namn på start (eller pause) till continue när speler är pausat
-* Fixa highscorelisten
-* Skriva pause när spelet är pausat
-* placera "Paused" i mitten av sidan (reglerna appliceras inte)
+* centrera "paused"
+* Byta namn på start (eller pause) till unpause när speler är pausat ✔
+* Fixa highscorelisten ✔
+* Skriva pause när spelet är pausat ✔
+* Få restart att fungera ✔
+* Ta bort flervalsmenyn och placera knapparna där istället.
+
 
 Lobby:
 * Lägg till olika teman (som länkar olika CSS filer)
+* Flytta titeln till sidan.
