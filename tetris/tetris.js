@@ -3,6 +3,8 @@ const context     = canvas.getContext('2d');
 const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
 let gamestate     = 'quit';
+let speedScale    = 0.1;
+let speedStart    = 1000;
 
 toggleStart();
 context.scale(20, 20);
@@ -46,7 +48,7 @@ function arenaSweep() {
 		const row = arena.splice(y, 1)[0].fill(0);
 		arena.unshift(row);
 		++y;
-		dropInterval -= rowCount * 30
+		dropInterval *= speedScale ** rowCount; 
 		player.score += rowCount * 10;
 		rowCount *= 2;
 	}
@@ -241,7 +243,7 @@ function restartSweep() {
 
 
 
-// GÖR SÅ ATT RADEN FÖRSVINNER NÄR DEN BLIVIT FYLLD(? TVIVLAR STARKT PÅ DET), GER POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. SKAPAR BITAR
+// STARTAR OM POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. SKAPAR BITAR
 
 function playerReset() {
 	const pieces  = 'ILJOTSZ';
@@ -259,8 +261,7 @@ function playerReset() {
 		arrToUl(div, highArr);
 		player.score = 0;
 		updateScore();
-		// scoreCount();
-		// console.log(highArr);
+		dropInterval = speedStart;
 	}
 }
 
@@ -306,7 +307,7 @@ function rotate(matrix, dir) {
 
 
 let dropCounter  = 0;
-let dropInterval = 1000;
+let dropInterval = speedStart;
 
 let lastTime = 0;
 // UPPDATERAR SIDAN.
@@ -406,7 +407,7 @@ function startFunc() {
 		updateScore();
 		gamestate = 'playing';
 		toggleStart();
-		update(20);
+		update();
 	}
 	
 }
@@ -436,6 +437,7 @@ function resetFunc() {
 	player.pos.y  = 0;
 	player.pos.x  =  (arena[0].length / 2 | 0) -
 					(player.matrix[0].length / 2 | 0);
+	dropInterval = speedStart;
 	update();
 }
 document.getElementById('altReset').addEventListener('click', resetFunc, false);
