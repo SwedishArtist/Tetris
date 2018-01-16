@@ -4,8 +4,8 @@ const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
 let gamestate     = 'quit';
 
+toggleStart();
 context.scale(20, 20);
-
 
 function board() {
 	context.save();
@@ -46,7 +46,7 @@ function arenaSweep() {
 		const row = arena.splice(y, 1)[0].fill(0);
 		arena.unshift(row);
 		++y;
-
+		dropInterval -= rowCount * 30
 		player.score += rowCount * 10;
 		rowCount *= 2;
 	}
@@ -312,7 +312,7 @@ let lastTime = 0;
 // UPPDATERAR SIDAN.
 
 function update(time = 0) {
-	const deltaTime = time - lastTime;
+	const deltaTime = time - lastTime; // Fattar inte hur delta time och dropCounter fungerar
 	lastTime = time;
 
 	dropCounter += deltaTime;
@@ -375,6 +375,14 @@ document.addEventListener('keydown', event => {
 });
 
 
+function toggleStart() {
+	let s = document.getElementById('altStart');
+	if (gamestate === 'quit' || gamestate === 'paused') {
+		s.style.display = 'block';
+	} else {
+		s.style.display = 'none';
+	}
+}
 
 function togglePause() {
 	let p = document.getElementById('paused');
@@ -390,17 +398,19 @@ function togglePause() {
 function startFunc() {
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
+		toggleStart();
 		update();
 	} else if (gamestate === 'quit') {
 	// arenaSweep();
 		playerReset();
 		updateScore();
 		gamestate = 'playing';
-		update();
+		toggleStart();
+		update(20);
 	}
 	
 }
-document.getElementById('start').addEventListener('click', startFunc, false);
+document.getElementById('altStart').addEventListener('click', startFunc, false);
 
 function stopFunc() {
 	let status = undefined;
@@ -414,9 +424,9 @@ function stopFunc() {
 		status = 'Unpause';
 		togglePause();
 	}
-	document.getElementById('stop').innerHTML = status;	
+	document.getElementById('altStop').innerHTML = status;	
 }
-document.getElementById('stop').addEventListener('click', stopFunc, false);
+document.getElementById('altStop').addEventListener('click', stopFunc, false);
 
 function resetFunc() {
 	restartSweep();
@@ -428,9 +438,9 @@ function resetFunc() {
 					(player.matrix[0].length / 2 | 0);
 	update();
 }
-document.getElementById('reset').addEventListener('click', resetFunc, false);
+document.getElementById('altReset').addEventListener('click', resetFunc, false);
 
-function lobby() {
+/*function lobby() {
 	document.location.href = 'index.html';
 }
-document.getElementById('lobby').addEventListener('click', lobby, false);
+document.getElementById('lobby').addEventListener('click', lobby, false); */

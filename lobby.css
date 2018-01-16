@@ -43,7 +43,6 @@ title {
 
 /*Dropdown */
 .dropbtn {
-	float: right; /*Funkar inte av nån anledning*/
     background-color: #4286f4;
     color: white;
     padding: 16px;

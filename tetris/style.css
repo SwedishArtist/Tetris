@@ -15,6 +15,11 @@ canvas {
 	height: 90vh;
 }
 
+#tetris {
+	position: absolute;
+	left: 50%;
+}
+
 button {
 	font-family: Open sans;
 	font-size: 1em;
@@ -41,8 +46,34 @@ p {
 	height: 300px;
 	border: 2px solid #a3e4d7;
 }
+.altButtons {
+position: absolute;
+left: 10px;
+top: 40px;
+}
 
 .altButton {
+	float: left;
+	background-color: #4286f4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-width: 2px;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 100px;
+    height: 20px;
+}
+
+#altStart {
+	position: relative;
+	left: 100px;
+}
+
+/* .altButton {
 	border-top: 1px solid #96d1f8;
 	background: #5684a3;
 	background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#5684a3));
@@ -67,7 +98,7 @@ p {
     position: relative;
     left: 50%;
     top: 5%;
-}
+} */
 
 .altButton:hover {
 	border-top-color: #28597a;
@@ -107,9 +138,14 @@ h2 {
 }
 
 #paused {
-	position: relative;
+	position: absolute;
 	display: none;
 	z-index: 3;
-	bottom: 50%;
+	left: 50%;
+	top: 50%;
 	border: 1px solid transparent;
+}
+
+#altStart {
+	display: none;
 }

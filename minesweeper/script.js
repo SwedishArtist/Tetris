@@ -1,5 +1,5 @@
 let w = 5;
-let h = 5;
+let h = 10;
 
 let matrix = new Array(h);
 let matrixT = new Array(h);
@@ -13,7 +13,7 @@ let square = {
 square.bomb = true;
 console.log(square);
 
-// skapar en matris med höjden w och breddeb w
+// skapar en matris med höjden h och breddeb w
 for (i=0; i<h; i++) {
 	matrix[i] = new Array(w);
 	for (j=0; j<w; j++) {
