@@ -10,10 +10,11 @@ body {
     font-family: Open Sans;
 }
 
-canvas {
+/* canvas {
 	border: 2px solid;
 	background: #1c2833;
 }
+*/
 
 ul {
 	color: white;

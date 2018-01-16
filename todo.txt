@@ -13,6 +13,8 @@ Tetris:
 * Fixa highscorelisten ✔
 * Skriva pause när spelet är pausat ✔
 * Få restart att fungera ✔
+* Ta bort flervalsmenyn och placera knapparna där istället.
+
 
 Lobby:
 * Lägg till olika teman (som länkar olika CSS filer).
