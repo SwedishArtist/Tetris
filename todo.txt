@@ -6,9 +6,9 @@ Allmänt:
 * Lägga till ljudeffekter, t.ex. knapparna.
 
 Tetris:
-* Skriva CSS till de alternativa knapparna
 * centrera "paused"
-* Ta bort flervalsmenyn och placera knapparna där istället.
+* Ta bort flervalsmenyn och placera knapparna där istället. (jag som gillade flervalsmenyn)
+* Skriva CSS till de alternativa knapparna ✔
 * Byta namn på start (eller pause) till unpause när speler är pausat ✔
 * Fixa highscorelisten ✔
 * Skriva pause när spelet är pausat ✔

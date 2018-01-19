@@ -479,8 +479,3 @@ function hard() {
 document.getElementById('hard').addEventListener('click', hard, false);
 
 
-
-/*function lobby() {
-	document.location.href = 'index.html';
-}
-document.getElementById('lobby').addEventListener('click', lobby, false); */
