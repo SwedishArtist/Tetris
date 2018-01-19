@@ -3,9 +3,9 @@ const context     = canvas.getContext('2d');
 const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
 let gamestate     = 'quit';
-let speedScale    = 0.1;
+let speedScale    = 0.9;
 let speedStart    = 1000;
-
+let gameMode      = ''; 
 toggleStart();
 context.scale(20, 20);
 
@@ -125,6 +125,18 @@ function createPiece(type) {
 			[0, 7, 7],
 			[0, 0, 0],
 		]; 
+	} else if (type === '.') {
+		return [	
+			[0, 0, 0],
+			[0, 8, 0],
+			[0, 0, 0],
+		]; 
+	} else if (type === '2') {
+		return [	
+			[0, 9, 0],
+			[0, 9, 0],
+			[0, 0, 0],
+		]; 
 	}
 }
 
@@ -214,18 +226,6 @@ function arrToUl(root, arr) {
 	});
 }
 
-// ÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖ
-/*
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(let i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-} */
 
 // ÄNDRA PLAYER RESET OM DENNA ÄNDRAS
 
@@ -244,10 +244,22 @@ function restartSweep() {
 
 
 // STARTAR OM POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. SKAPAR BITAR
+let piece = undefined;
+let nextPiece = undefined;
 
 function playerReset() {
-	const pieces  = 'ILJOTSZ';
-	player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
+	let pieces  = '';
+	if (gameMode === 'easy') {
+		pieces  = 'ILJOTSZ.2';
+	} else if (gameMode === 'medium' || gameMode === 'hard') {
+		pieces  = 'ILJOTSZ';
+	}
+	piece = createPiece(pieces[pieces.length * Math.random() | 0]);
+	if (dropCounter !== 0){
+		peice = nextPiece
+	}
+	nextPiece = piece = createPiece(pieces[pieces.length * Math.random() | 0]);
+	player.matrix = piece;
 	player.pos.y  = 0;
 	player.pos.x  =  (arena[0].length / 2 | 0) -
 					(player.matrix[0].length / 2 | 0);
@@ -347,6 +359,8 @@ const colors = [
 	'#f1c40f',
 	'orange',
 	'#b03a2e',
+	'#e842f4',
+	'#00ff7f',
 ];
 
 // SKAPAR SPELPLAN OCH PÅBÖRJAR RÄKNING AV POÄNGEN.
@@ -440,7 +454,31 @@ function resetFunc() {
 	dropInterval = speedStart;
 	update();
 }
+
 document.getElementById('altReset').addEventListener('click', resetFunc, false);
+
+function easy() {
+	speedScale    = 0.97;
+	speedStart    = 1000;
+	gameMode = 'easy'
+}
+document.getElementById('easy').addEventListener('click', easy, false);
+
+function medium() {
+	speedScale    = 0.95;
+	speedStart    = 1000;
+	gameMode = 'medium'
+}
+document.getElementById('medium').addEventListener('click', medium, false);
+
+function hard() {
+	speedScale    = 0.9;
+	speedStart    = 700;
+	gameMode = 'hard'
+}
+document.getElementById('hard').addEventListener('click', hard, false);
+
+
 
 /*function lobby() {
 	document.location.href = 'index.html';

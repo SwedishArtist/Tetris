@@ -1,5 +1,5 @@
 let w = 5;
-let h = 10;
+let h = 5;
 
 let matrix = new Array(h);
 let matrixT = new Array(h);
