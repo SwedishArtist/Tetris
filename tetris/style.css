@@ -27,7 +27,8 @@ button {
 	text-align: center;
 }
 
-/* p {
+/*
+p {
 	position: absolute;
 	bottom: 500px;
 	text-align: center;
@@ -132,7 +133,7 @@ h2 {
 }
 
 #paused {
-	text-align: center;  /*Verkar inte funka*/
+    display: inline-block;
 	position: absolute;
 	display: none;
 	z-index: 3;
