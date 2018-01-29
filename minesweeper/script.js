@@ -65,38 +65,6 @@ for (i=0; i<h; i++) {
 		}
 	}
 
-
-/*
-	for (i=0; i<h - 1; i++) {
-		for (j=0; j<w - 1; j++) {
-			debugger;
-			if (matrix[i][j] === 1) {
-				square.bomb = true;
-				if (i > 0) {
-					matrix[i-1][j]++
-					if (j > 0) {
-						matrix[i-1][j-1]++
-						matrix[i][j-1]++
-					}
-					if (j < w - 1) {
-						matrix[i-1][j+1]++
-						matrix[i][j+1]++
-					}
-				}
-				if (i < h - 1) {
-					matrix[i+1][j]++
-					if (j > 0) {
-						matrix[i+1][j-1]++
-					}
-					if (j < w - 1) {
-						matrix[i+1][j+1]++
-					}
-				}
-			} else {
-				square.bomb = false;
-			}
-		}
-	} */
 document.write("</br>")
 for (i=0; i<h; i++) {
 	for (j=0; j<w; j++) {

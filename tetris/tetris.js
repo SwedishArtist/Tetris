@@ -4,12 +4,33 @@ const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
 let gamestate     = 'quit';
 let speedScale    = 0.9;
-let speedStart    = 1000;
+const speedStart  = 1000;
 let gameMode      = ''; 
 let clickSound    = new Audio('../sound/click.mp3');
 let breakSound    = new Audio('../sound/jump.mp3');
 toggleStart();
 context.scale(20, 20);
+
+/* funktioner:
+board()
+arenaSweep()
+collide(arena, player)
+createMatrix(w, h)
+createPiece(type)
+draw()
+drawMatrix(matrix, offset)
+merge(arena, player)
+playerDrop()
+playerMove(dir)
+arrToUl(root, arr)
+restartSweep()
+playerReset()
+playerRotate(dir)
+rotate(matrix, dir)
+update(time = 0)
+updateScore()
+GRUPP knappar
+*/
 
 function board() {
 	context.save();
@@ -421,7 +442,6 @@ function startFunc() {
 		update();
 		window.scrollTo(0, 500);
 	} else if (gamestate === 'quit') {
-	// arenaSweep();
 		playerReset();
 		updateScore();
 		gamestate = 'playing';
