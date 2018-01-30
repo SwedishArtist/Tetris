@@ -1,16 +1,16 @@
 let allText   = undefined;
 
 function readTextFile(file) {
-    let rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function () {
-        if ( rawFile.readyState === 4 ) {
-            if ( rawFile.status === 200 || rawFile.status == 0 ) {
-                allText = rawFile.responseText;
-            }
-        }
-    }
-    rawFile.send(null);
+	let rawFile = new XMLHttpRequest();
+	rawFile.open('GET', file, false);
+	rawFile.onreadystatechange = function () {
+		if ( rawFile.readyState === 4 ) {
+			if ( rawFile.status === 200 || rawFile.status == 0 ) {
+				allText = rawFile.responseText;
+			}
+		}
+	};
+	rawFile.send(null);
 }
 
 readTextFile('words.txt');
@@ -21,38 +21,50 @@ let word        = wordP.slice(1, -1);
 let result      = new Array(word.length);
 let guess       = undefined;
 let letterInput = document.getElementById('guessInput');
-let letterForm  = document.getElementById('guessForm');
+//let letterForm  = document.getElementById('guessForm');
 let incLetters  = [];
 
-
-for (let i=0; i<word.length; i++) {
-    sum = i + i
-}
-
+// KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
-    guees = document.getElementById('guessInput').value;
-    let isCorrect = false;
-    for (let i=0; i<word.length; i++) {
-        if (word.charAt(i) === guess) {
-            result.splice(i, 1, guess);
-            isCorrect = true;
-        }
-    }
+	guessL = document.getElementById('guessInput').value;
+	guess  = guessL.toUpperCase();
+	let isCorrect = false;
+	for (let i=0; i<word.length; i++) {
+		if (word.charAt(i) === guess) {
+			result.splice(i, 1, guess);
+			isCorrect = true;
+			document.getElementById('letters').innerHTML = result.toString();
+		}
+	}
 
-    if (isCorrect === false) {
-        incLetters.push(guess);
-        list();
-    }
+	if (isCorrect === false) {
+		incLetters.push(guess);
+		if (isElementInArr(incLetters, guess) === true) {
+			list();
+		}
+	}
+	document.getElementById('guessInput').value = '';
 }
 
 letterInput.addEventListener('input', onGuess, false);
 
 function list() {
-    let li = document.createElement('li');
-    document.getElementById('incUl').appendChild(li);
-    let content = document.createTextNode(guess);
-    li.appendChild(content);
+	let li = document.createElement('li');
+	document.getElementById('incUl').appendChild(li);
+	let content = document.createTextNode(guess);
+	li.appendChild(content);
 }
+
+function isElementInArr(arr,element) {
+	if(arr != null && arr.length > 0) {
+		for(let i=0; i < arr.length; i++) {
+			if(arr[i] == element) {
+				return true;
+			}
+		}
+	}
+	return false;
+} 
 
 
 /*function arrToUl(root, arr) {
