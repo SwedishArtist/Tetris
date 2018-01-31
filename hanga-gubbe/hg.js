@@ -33,6 +33,7 @@ function onGuess() {
 		if (word.charAt(i) === guess) {
 			result.splice(i, 1, guess);
 			document.getElementById('letters').innerHTML = result.toString();
+            isCorrect = true;
 		}
 	}
 
