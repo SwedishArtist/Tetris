@@ -21,7 +21,7 @@ let word        = wordP.slice(1, -1);
 let result      = new Array(word.length);
 let guess       = undefined;
 let letterInput = document.getElementById('guessInput');
-//let letterForm  = document.getElementById('guessForm');
+// let letterForm  = document.getElementById('guessForm');
 let incLetters  = [];
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
@@ -32,16 +32,15 @@ function onGuess() {
 	for (let i=0; i<word.length; i++) {
 		if (word.charAt(i) === guess) {
 			result.splice(i, 1, guess);
-			isCorrect = true;
 			document.getElementById('letters').innerHTML = result.toString();
 		}
 	}
 
 	if (isCorrect === false) {
-		incLetters.push(guess);
-		if (isElementInArr(incLetters, guess) === true) {
+		if (isElementInArr(incLetters, guess) === false) {
 			list();
 		}
+        incLetters.push(guess);
 	}
 	document.getElementById('guessInput').value = '';
 }
