@@ -4,7 +4,7 @@ const startButton = document.getElementById('Button'); // används den här?
 let highArr       = [];
 let gamestate     = 'quit';
 let speedScale    = 0.9;
-const speedStart  = 1000;
+let speedStart    = 1000;
 let gameMode      = ''; 
 let clickSound    = new Audio('../sound/click.mp3');
 let breakSound    = new Audio('../sound/jump.mp3');
@@ -436,6 +436,7 @@ function togglePause() {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
+	debugger;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		toggleStart();
@@ -493,30 +494,28 @@ function resetFunc() {
 document.getElementById('altReset').addEventListener('click', resetFunc, false);
 
 function easy() {
-	speedScale    = 0.97;
-	speedStart    = 1000;
-	gameMode = 'easy';
+	speedScale = 0.97;
+	speedStart = 1000;
+	gameMode   = 'easy';
 	clickSound.play();
 	clickSound.currentTime = 0;
 }
 document.getElementById('easy').addEventListener('click', easy, false);
 
 function medium() {
-	speedScale    = 0.95;
-	speedStart    = 1000;
-	gameMode = 'medium';
+	speedScale = 0.95;
+	speedStart = 1000;
+	gameMode   = 'medium';
 	clickSound.play();
 	clickSound.currentTime = 0;
 }
 document.getElementById('medium').addEventListener('click', medium, false);
 
 function hard() {
-	speedScale    = 0.9;
-	speedStart    = 700;
-	gameMode = 'hard';
+	speedScale = 0.9;
+	speedStart = 700;
+	gameMode   = 'hard';
 	clickSound.play();
 	clickSound.currentTime = 0;
 }
 document.getElementById('hard').addEventListener('click', hard, false);
-
-
