@@ -27,9 +27,10 @@ let lives       = 10;
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
+    debugger;
 	let guessL = document.getElementById('guessInput').value;
 	guess  = guessL.toUpperCase();
-	if (guess !== /[a-zA-Z]/) {
+	if (guess <'A'|| guess >'Z') {
 		document.getElementById('guessInput').value = '';
 		return;
 	}
