@@ -436,7 +436,6 @@ function togglePause() {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
-	debugger;
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		toggleStart();

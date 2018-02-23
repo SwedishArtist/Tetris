@@ -21,27 +21,33 @@ let word        = wordP.slice(1, -1);
 let result      = new Array(word.length);
 let guess       = undefined;
 let letterInput = document.getElementById('guessInput');
-// let letterForm  = document.getElementById('guessForm');
 let incLetters  = [];
+let lives       = 10;
+// let letterForm  = document.getElementById('guessForm');
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
-	guessL = document.getElementById('guessInput').value;
+	let guessL = document.getElementById('guessInput').value;
 	guess  = guessL.toUpperCase();
+	if (guess !== /[a-zA-Z]/) {
+		document.getElementById('guessInput').value = '';
+		return;
+	}
 	let isCorrect = false;
 	for (let i=0; i<word.length; i++) {
 		if (word.charAt(i) === guess) {
 			result.splice(i, 1, guess);
 			document.getElementById('letters').innerHTML = result.toString();
-            isCorrect = true;
+			isCorrect = true;
 		}
 	}
 
 	if (isCorrect === false) {
 		if (isElementInArr(incLetters, guess) === false) {
 			list();
+			hang();
+			incLetters.push(guess);
 		}
-        incLetters.push(guess);
 	}
 	document.getElementById('guessInput').value = '';
 }
@@ -56,7 +62,7 @@ function list() {
 }
 
 function isElementInArr(arr,element) {
-	if(arr != null && arr.length > 0) {
+	if (arr != null && arr.length > 0) {
 		for(let i=0; i < arr.length; i++) {
 			if(arr[i] == element) {
 				return true;
@@ -66,6 +72,22 @@ function isElementInArr(arr,element) {
 	return false;
 } 
 
+function hang() {
+	lives--;
+	if (lives < 0) {
+		gameOver();
+	}
+}
+
+function gameOver() {
+    document.getElementById('guessInput').setAttribute('maxlength', '0');
+	for (let i=0; i<5; i++) {
+		let li = document.createElement('li');
+		document.getElementById('incUl').appendChild(li);
+		let content = document.createTextNode('GAMEOVER');
+		li.appendChild(content);
+	}
+}
 
 /*function arrToUl(root, arr) {
     console.log(incLetters);
