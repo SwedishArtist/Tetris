@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-	<meta charset="UTF-8">
-	<title>Hangman</title>
-</head>
-<body>
-	<form id="guessForm">
-		<input type="text" id="guessInput" maxlength="1" autocomplete="off"/>
-	</form>
-	<div id="letters"></div>
-	<ul id="incUl"></ul>
-	<script src="hg.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hangman</title>
+	</head>
+	<body>
+		<form id="guessForm">
+			<input type="text" id="guessInput" maxlength="1" autocomplete="off"/>
+		</form>
+		<div id="answer">
+			<div id="letters"></div>
+			<div id="lines"></div>
+			<div id="goAnswer"></div>
+
+		</div>
+			<ul id="incUl"></ul>
+		<script src="hg.js"></script>
+	</body>
 </html>

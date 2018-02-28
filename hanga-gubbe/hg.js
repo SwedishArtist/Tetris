@@ -12,8 +12,16 @@ function readTextFile(file) {
 	};
 	rawFile.send(null);
 }
-
-readTextFile('words.txt');
+switch (lang) {
+    case 'sv':
+        readTextFile('sv.txt');
+        break;
+    case 'fr';
+        readTextFile('fr.txt');
+        break;
+    default:
+        readTextFile('words.txt');
+}
 
 let words       = allText.split(',');
 let wordP       = words[Math.round(Math.random() * 1785)];
@@ -23,11 +31,18 @@ let guess       = undefined;
 let letterInput = document.getElementById('guessInput');
 let incLetters  = [];
 let lives       = 10;
+let lineString  = ''
 // let letterForm  = document.getElementById('guessForm');
+
+for (let i=0; i<word.length; i++) {
+      lineString += '_ '
+}
+
+document.getElementById('lines').innerHTML = lineString
+
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
-    debugger;
 	let guessL = document.getElementById('guessInput').value;
 	guess  = guessL.toUpperCase();
 	if (guess <'A'|| guess >'Z') {
@@ -88,6 +103,7 @@ function gameOver() {
 		let content = document.createTextNode('GAMEOVER');
 		li.appendChild(content);
 	}
+    document.getElementById('goAnswer').innerHTML = word;
 }
 
 /*function arrToUl(root, arr) {
