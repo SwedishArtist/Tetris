@@ -1,4 +1,8 @@
-let allText   = undefined;
+let allText     = undefined;
+let wordAmmount = undefined;
+let lang        = 'pl'
+let words       = undefined;
+let word        = undefined;
 
 function readTextFile(file) {
 	let rawFile = new XMLHttpRequest();
@@ -12,20 +16,30 @@ function readTextFile(file) {
 	};
 	rawFile.send(null);
 }
+
 switch (lang) {
     case 'sv':
         readTextFile('sv.txt');
+        wordAmmount = 24262;
+        words   = allText.split('\r\n');
+        word    = words[Math.round(Math.random() * wordAmmount)];
         break;
-    case 'fr';
-        readTextFile('fr.txt');
+    case 'pl':
+        readTextFile('pl.txt');
+        wordAmmount = 2703280;
+        words   = allText.split('\r\n');
+        word    = words[Math.round(Math.random() * wordAmmount)];
         break;
     default:
         readTextFile('words.txt');
+        wordAmmount = 1785;
+        words   = allText.split(',');
+        wordP   = words[Math.round(Math.random() * wordAmmount)];
+        word    = wordP.slice(1, -1);
 }
 
-let words       = allText.split(',');
-let wordP       = words[Math.round(Math.random() * 1785)];
-let word        = wordP.slice(1, -1);
+
+
 let result      = new Array(word.length);
 let guess       = undefined;
 let letterInput = document.getElementById('guessInput');
@@ -45,10 +59,10 @@ document.getElementById('lines').innerHTML = lineString
 function onGuess() {
 	let guessL = document.getElementById('guessInput').value;
 	guess  = guessL.toUpperCase();
-	if (guess <'A'|| guess >'Z') {
+	/*if (guess <'A'|| guess >'Z' || guess === 'Ä' || guess === 'Å' || guess === 'Ö') {
 		document.getElementById('guessInput').value = '';
 		return;
-	}
+	}*/
 	let isCorrect = false;
 	for (let i=0; i<word.length; i++) {
 		if (word.charAt(i) === guess) {
