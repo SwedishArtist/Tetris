@@ -1,8 +1,15 @@
+let letterInput = document.getElementById('guessInput');
 let allText     = undefined;
 let wordAmmount = undefined;
-let lang        = 'pl'
 let words       = undefined;
 let word        = undefined;
+let trollWord   = undefined;
+let result      = undefined;
+let guess       = undefined;
+let incLetters  = undefined;
+let lives       = undefined;
+let lineString  = undefined;
+let lang        = undefined;
 
 function readTextFile(file) {
 	let rawFile = new XMLHttpRequest();
@@ -16,53 +23,74 @@ function readTextFile(file) {
 	};
 	rawFile.send(null);
 }
+let dropDown = document.getElementById('lang');
 
-switch (lang) {
-    case 'sv':
-        readTextFile('sv.txt');
-        wordAmmount = 24262;
-        words   = allText.split('\r\n');
-        word    = words[Math.round(Math.random() * wordAmmount)];
-        break;
-    case 'pl':
-        readTextFile('pl.txt');
-        wordAmmount = 2703280;
-        words   = allText.split('\r\n');
-        word    = words[Math.round(Math.random() * wordAmmount)];
-        break;
-    default:
-        readTextFile('words.txt');
-        wordAmmount = 1785;
-        words   = allText.split(',');
-        wordP   = words[Math.round(Math.random() * wordAmmount)];
-        word    = wordP.slice(1, -1);
+/*dropDown.addEventListener('change', (e) => {
+    lang = e.target.value 
+})*/
+
+
+function normalPlay() {
+    switch (lang) {
+        case 'sv':
+            readTextFile('sv.txt');
+            wordAmmount = 24262;
+            words       = allText.split('\r\n');
+            word        = words[Math.round(Math.random() * wordAmmount)];
+            word        = word.toUpperCase();
+            trollWord   = 'Spårvagnsaktiebolagsskensmutsskjutarefackföreningspersonalbeklädnadsmagasinsförrådsförvaltarens';
+            trollWord   = trollWord.toUpperCase();
+            break;
+
+        case 'pl':
+            readTextFile('pl.txt');
+            wordAmmount = 2703280;
+            words       = allText.split('\r\n');
+            word        = words[Math.round(Math.random() * wordAmmount)];
+            word        = word.toUpperCase();
+            break;
+            
+        default:
+            readTextFile('words.txt');
+            wordAmmount = 1785;
+            words       = allText.split(',');
+            wordP       = words[Math.round(Math.random() * wordAmmount)];
+            word        = wordP.slice(1, -1);
+    }
+    result      = new Array(word.length);
+    incLetters  = [];
+    lives       = 10;
+    lineString  = ''
+
+    for (let i=0; i<word.length; i++) {
+          lineString += '_ '
+    }
+
+    document.getElementById('lines').innerHTML = lineString;
 }
 
 
-
-let result      = new Array(word.length);
-let guess       = undefined;
-let letterInput = document.getElementById('guessInput');
-let incLetters  = [];
-let lives       = 10;
-let lineString  = ''
-// let letterForm  = document.getElementById('guessForm');
-
-for (let i=0; i<word.length; i++) {
-      lineString += '_ '
+function ownWord() {
+    word = prompt('Enter your own word').toUpperCase();
+    result      = new Array(word.length);
+    incLetters  = [];
+    lives       = 10;
+    lineString  = ''
+    for (let i=0; i<word.length; i++) {
+          lineString += '_ '
+    }
+    document.getElementById('lines').innerHTML = lineString;
 }
-
-document.getElementById('lines').innerHTML = lineString
-
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
+    debugger;
 	let guessL = document.getElementById('guessInput').value;
 	guess  = guessL.toUpperCase();
-	/*if (guess <'A'|| guess >'Z' || guess === 'Ä' || guess === 'Å' || guess === 'Ö') {
+	if (!((guess >='A' && guess <='Z') || guess === 'Ä' || guess === 'Å' || guess === 'Ö')) {
 		document.getElementById('guessInput').value = '';
 		return;
-	}*/
+	}
 	let isCorrect = false;
 	for (let i=0; i<word.length; i++) {
 		if (word.charAt(i) === guess) {

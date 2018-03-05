@@ -8,10 +8,25 @@ let speedStart    = 1000;
 let gameMode      = ''; 
 let clickSound    = new Audio('../sound/click.mp3');
 let breakSound    = new Audio('../sound/jump.mp3');
+let song1         = new Audio('../sound/music/zentrixDFS.mp3')
 toggleStart();
 context.scale(20, 20);
+let currentTimeSong1 = sessionStorage.getItem('song1Time');
+song1.currentTime    = currentTimeSong1
+song1.play();
+
+song1.addEventListener('timeupdate',function() {
+    currentTimeSong1 = song1.currentTime;
+}, false);
+
+song1.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
 
 /* funktioner:
+sendAudio()
 board()
 arenaSweep()
 collide(arena, player)
@@ -31,6 +46,11 @@ update(time = 0)
 updateScore()
 GRUPP knappar
 */
+function sendAudio() {
+  clickSound.play();
+  clickSound.currentTime = 0;
+  sessionStorage.setItem('song1Time', currentTimeSong1);
+}
 
 function board() {
 	context.save();

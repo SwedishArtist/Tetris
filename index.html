@@ -5,10 +5,12 @@
 		<title>F&amp;S otroliga hemsida</title>
 		<link rel="stylesheet" href="lobby.css" />
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans">
-		<script src="script.js"></script>
 	</head>
 	<body>
-
+		<div id="volume">
+			<p>Volume</p>
+			<input id="volumeSlider" type="range" value="100" step="1" min="0" max="100">
+		</div>
 		<div class="dropdown">
 	  		<button onclick="dropFunc()" class="dropbtn">Language</button>
 	  		<div id="myDropdown" class="dropdown-content">
@@ -22,13 +24,13 @@
 
 		<ul>
 			<li>Lobby</li>
-			<li><a href="tetris/tetris.html">Tetris</a></li>
-			<li><a href="info/index.html">info</a></li>
+			<li onclick="sendAudio()"><a href="tetris/tetris.html">Tetris</a></li>
+			<li onclick="sendAudio()"><a href="info/index.html">info</a></li>
 		</ul>
 
 		<div class="title">
 			<h3>Lobby</h3>
 		</div>
-
+		<script src="script.js"></script>
 	</body>
 </html>

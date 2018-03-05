@@ -4,6 +4,7 @@ Allmänt:
 * Lägg till språk (och se till att pråket sparas i alla spel)
 * Organisera och snygga till
 * Lägga till ljudeffekter, t.ex. knapparna.
+* fixa clickljud
 
 Tetris:
 * centrera "paused" (se till att bestämma positionen av mitten istället för det vänstra övre hörnet)

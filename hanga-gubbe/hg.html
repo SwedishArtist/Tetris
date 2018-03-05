@@ -8,6 +8,13 @@
 		<form id="guessForm">
 			<input type="text" id="guessInput" maxlength="1" autocomplete="off"/>
 		</form>
+		<button id="ownWord" onclick="ownWord()">Enter your own word</button>
+		<select name="lang">
+  			<option value="en">English</option>
+  			<option value="sv">Svenska</option>
+  			<option value="pl">Polski</option>
+		</select> 
+		<button onclick="normalPlay()">Random words</button>
 		<div id="answer">
 			<div id="letters"></div>
 			<div id="lines"></div>
