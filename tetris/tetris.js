@@ -1,18 +1,23 @@
-const canvas      = document.getElementById('tetris');
-const context     = canvas.getContext('2d');
-const startButton = document.getElementById('Button'); // används den här?
-let highArr       = [];
-let gamestate     = 'quit';
-let speedScale    = 0.9;
-let speedStart    = 1000;
-let gameMode      = ''; 
-let clickSound    = new Audio('../sound/click.mp3');
-let breakSound    = new Audio('../sound/jump.mp3');
-let song1         = new Audio('../sound/music/zentrixDFS.mp3')
-toggleStart();
-context.scale(20, 20);
+const canvas         = document.getElementById('tetris');
+const context        = canvas.getContext('2d');
+const startButton    = document.getElementById('Button'); // används den här?
+let highArr          = [];
+let gamestate        = 'quit';
+let speedScale       = 0.9;
+let speedStart       = 1000;
+let gameMode         = ''; 
+let clickSound       = new Audio('../sound/click.mp3');
+let breakSound       = new Audio('../sound/jump.mp3');
+let song1            = new Audio('../sound/music/zentrixDFS.mp3')
+sentVolume           = sessionStorage.getItem('songVolume');
 let currentTimeSong1 = sessionStorage.getItem('song1Time');
 song1.currentTime    = currentTimeSong1
+
+if (sentVolume != null) {
+	song1.volume = sentVolume;
+	volumeSlider.setAttribute('value', sentVolume * 100);
+}
+
 song1.play();
 
 song1.addEventListener('timeupdate',function() {
@@ -24,8 +29,12 @@ song1.addEventListener('ended', function() {
     this.play();
 }, false);
 
+toggleStart();
+context.scale(20, 20);
+
 
 /* funktioner:
+setVolume()
 sendAudio()
 board()
 arenaSweep()
@@ -50,6 +59,13 @@ function sendAudio() {
   clickSound.play();
   clickSound.currentTime = 0;
   sessionStorage.setItem('song1Time', currentTimeSong1);
+}
+
+volumeSlider.addEventListener('mousemove', setVolume);
+
+function setVolume() {
+	song1.volume = volumeSlider.value / 100;
+	sessionStorage.setItem('songVolume', song1.volume)
 }
 
 function board() {

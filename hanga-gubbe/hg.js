@@ -1,8 +1,10 @@
+"use strict";
 let letterInput = document.getElementById('guessInput');
 let allText     = undefined;
 let wordAmmount = undefined;
 let words       = undefined;
 let word        = undefined;
+let wordP       = undefined;
 let trollWord   = undefined;
 let result      = undefined;
 let guess       = undefined;
@@ -10,6 +12,7 @@ let incLetters  = undefined;
 let lives       = undefined;
 let lineString  = undefined;
 let lang        = undefined;
+let keyPress    = false;
 
 function readTextFile(file) {
 	let rawFile = new XMLHttpRequest();
@@ -25,78 +28,111 @@ function readTextFile(file) {
 }
 let dropDown = document.getElementById('lang');
 
-/*dropDown.addEventListener('change', (e) => {
-    lang = e.target.value 
-})*/
+dropDown.addEventListener('change', (e) => {
+    lang = e.target.value.toString() 
+})
+
+let specialCharacters = document.getElementById('specialCharacters');
+
+
+specialCharacters.addEventListener('click', (e) => {
+    if ( e.target.tagName.toLowerCase() !== 'button') {
+        return false;
+    }
+    guess = e.target.innerHTML;
+    keyPress = true;
+    onGuess();
+})
 
 
 function normalPlay() {
-    switch (lang) {
-        case 'sv':
-            readTextFile('sv.txt');
-            wordAmmount = 24262;
-            words       = allText.split('\r\n');
-            word        = words[Math.round(Math.random() * wordAmmount)];
-            word        = word.toUpperCase();
-            trollWord   = 'Spårvagnsaktiebolagsskensmutsskjutarefackföreningspersonalbeklädnadsmagasinsförrådsförvaltarens';
-            trollWord   = trollWord.toUpperCase();
-            break;
+	document.getElementById('guessInput').setAttribute('maxlength', '1');
+	switch (lang) {
+	case 'sv':
+		readTextFile('sv.txt');
+		wordAmmount = 24262;
+		words       = allText.split('\r\n');
+		word        = words[Math.round(Math.random() * wordAmmount)];
+		word        = word.toUpperCase();
+		trollWord   = 'Spårvagnsaktiebolagsskensmutsskjutarefackföreningspersonalbeklädnadsmagasinsförrådsförvaltarens';
+		trollWord   = trollWord.toUpperCase();
+		break;
 
-        case 'pl':
-            readTextFile('pl.txt');
-            wordAmmount = 2703280;
-            words       = allText.split('\r\n');
-            word        = words[Math.round(Math.random() * wordAmmount)];
-            word        = word.toUpperCase();
-            break;
+	case 'pl':
+		readTextFile('pl.txt');
+		wordAmmount = 2703280;
+		words       = allText.split('\r\n');
+		word        = words[Math.round(Math.random() * wordAmmount)];
+		word        = word.toUpperCase();
+		break;
             
-        default:
-            readTextFile('words.txt');
-            wordAmmount = 1785;
-            words       = allText.split(',');
-            wordP       = words[Math.round(Math.random() * wordAmmount)];
-            word        = wordP.slice(1, -1);
-    }
-    result      = new Array(word.length);
-    incLetters  = [];
-    lives       = 10;
-    lineString  = ''
+	default:
+		readTextFile('words.txt');
+		wordAmmount = 1785;
+		words       = allText.split(',');
+		wordP       = words[Math.round(Math.random() * wordAmmount)];
+		word        = wordP.slice(1, -1);
+	}
+	result      = new Array(word.length);
+	incLetters  = [];
+	lives       = 10;
+	lineString  = '';
 
-    for (let i=0; i<word.length; i++) {
-          lineString += '_ '
-    }
 
-    document.getElementById('lines').innerHTML = lineString;
+	/*for (let i=0; i<word.length; i++) {
+		result.splice(i, 1, '&emsp'); 
+	}*/
+	for (let i=0; i<word.length; i++) {
+		lineString += '_&emsp;';
+	}
+
+	document.getElementById('lines').innerHTML = lineString;
 }
 
 
 function ownWord() {
-    word = prompt('Enter your own word').toUpperCase();
-    result      = new Array(word.length);
-    incLetters  = [];
-    lives       = 10;
-    lineString  = ''
-    for (let i=0; i<word.length; i++) {
-          lineString += '_ '
-    }
-    document.getElementById('lines').innerHTML = lineString;
+	lang = 'own';
+	word = prompt('Enter your own word').toUpperCase();
+	document.getElementById('guessInput').setAttribute('maxlength', '1');
+	result      = new Array(word.length);
+	incLetters  = [];
+	lives       = 10;
+	lineString  = '';
+	for (let i=0; i<word.length; i++) {
+		lineString += '_&emsp;';
+	}
+	document.getElementById('lines').innerHTML = lineString;
 }
 
 // KOLLAR OM GISSNINGEN FINNS MED I ORDET
 function onGuess() {
-    debugger;
-	let guessL = document.getElementById('guessInput').value;
-	guess  = guessL.toUpperCase();
-	if (!((guess >='A' && guess <='Z') || guess === 'Ä' || guess === 'Å' || guess === 'Ö')) {
-		document.getElementById('guessInput').value = '';
-		return;
+    if (keyPress === false) {
+        let guessL = document.getElementById('guessInput').value;
+        guess      = guessL.toUpperCase();
+    }
+	if (lang === 'sv') {
+		if (!((guess >='A' && guess <='Z') || guess === 'Ä' || guess === 'Å' || guess === 'Ö')) {
+			document.getElementById('guessInput').value = '';
+			return;
+		}
 	}
+
+	if (lang === 'en') {
+		if (!(guess >='A' && guess <='Z')) {
+			document.getElementById('guessInput').value = '';
+			return;
+		}
+	}
+	
 	let isCorrect = false;
 	for (let i=0; i<word.length; i++) {
 		if (word.charAt(i) === guess) {
 			result.splice(i, 1, guess);
-			document.getElementById('letters').innerHTML = result.toString();
+			document.getElementById('letters').innerHTML = result.join('&emsp;'); 
 			isCorrect = true;
+			if (result.join('') === word) {
+				win();
+			}
 		}
 	}
 
@@ -137,15 +173,37 @@ function hang() {
 	}
 }
 
+function win() {
+	document.getElementById('guessInput').setAttribute('maxlength', '0');
+	let li = document.createElement('li');
+	document.getElementById('incUl').appendChild(li);
+	let content = document.createTextNode('HEHEHE YOU WIN! HOW DID YOU DO THAT?! THAT\'S AMAZING');
+	li.appendChild(content);
+}
+
 function gameOver() {
-    document.getElementById('guessInput').setAttribute('maxlength', '0');
+	document.getElementById('guessInput').setAttribute('maxlength', '0');
 	for (let i=0; i<5; i++) {
 		let li = document.createElement('li');
 		document.getElementById('incUl').appendChild(li);
 		let content = document.createTextNode('GAMEOVER');
 		li.appendChild(content);
 	}
-    document.getElementById('goAnswer').innerHTML = word;
+	document.getElementById('goAnswer').innerHTML = word;
+}
+
+function restart() {
+	let incUl = document.getElementById('incUl');
+	while (incUl.firstChild) {
+		incUl.removeChild(incUl.firstChild);
+	}
+	incLetters = [];
+	lives      = 10;
+	document.getElementById('lines').innerHTML = '';
+	document.getElementById('goAnswer').innerHTML = '';
+	document.getElementById('guessInput').setAttribute('maxlength', '1');
+	document.getElementById('goAnswer').innerHTML = '';
+	document.getElementById('letters').innerHTML = '';
 }
 
 /*function arrToUl(root, arr) {

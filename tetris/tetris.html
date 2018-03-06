@@ -16,7 +16,10 @@
 	  <button id="reset">Restart</button>
 	  < button id="lobby">Back to lobby</button>
 	</div-->
-
+		<div id="volume">
+			<p>Volume</p>
+			<input id="volumeSlider" type="range" value="100" step="1" min="0" max="100">
+		</div>
 	<p id="paused">Paused</p>
 
 
@@ -31,7 +34,7 @@
 		<div class="altButton" id="easy">Easy</div>
 		<div class="altButton" id="medium">Medium</div>
 		<div class="altButton" id="hard">Hard</div>
-		<a onclick="sendAudio()" href="../index.html">
+		<a onclick="sendAudio();sendVolume();" href="../index.html">
 			<div class="altButton" id="altLobby">Back to lobby</div>
 		</a>
 		

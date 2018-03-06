@@ -6,20 +6,31 @@
 	</head>
 	<body>
 		<form id="guessForm">
-			<input type="text" id="guessInput" maxlength="1" autocomplete="off"/>
+			<input type="text" id="guessInput" maxlength="0" autocomplete="off"/>
 		</form>
 		<button id="ownWord" onclick="ownWord()">Enter your own word</button>
-		<select name="lang">
+		<select name="lang" id="lang">
   			<option value="en">English</option>
   			<option value="sv">Svenska</option>
   			<option value="pl">Polski</option>
 		</select> 
 		<button onclick="normalPlay()">Random words</button>
+		<button onclick="restart()">New game</button>
 		<div id="answer">
 			<div id="letters"></div>
 			<div id="lines"></div>
 			<div id="goAnswer"></div>
-
+		</div>
+		<div id="specialCharacters">
+			<button>Ą</button>
+			<button>Ć</button>
+			<button>Ę</button>
+			<button>Ł</button>
+			<button>Ń</button>
+			<button>Ó</button>
+			<button>Ś</button>
+			<button>Ź</button>
+			<button>Ż</button>
 		</div>
 			<ul id="incUl"></ul>
 		<script src="hg.js"></script>

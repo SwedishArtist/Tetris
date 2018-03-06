@@ -4,6 +4,14 @@ let song1                = new Audio('sound/music/zentrixDFS.mp3');
 let volumeSlider         = document.getElementById('volumeSlider');
 let sentCurrentTimeSong1 = sessionStorage.getItem('song1Time');
 song1.currentTime        = sentCurrentTimeSong1;
+let sentVolume           = sessionStorage.getItem('songVolume');
+
+if (sentVolume != null) {
+	song1.volume = sentVolume;
+	volumeSlider.setAttribute('value', sentVolume * 100);
+}
+
+setVolume();
 song1.play();
 
 song1.addEventListener('ended', function() {
@@ -15,7 +23,7 @@ volumeSlider.addEventListener('mousemove', setVolume);
 
 function setVolume() {
 	song1.volume = volumeSlider.value / 100;
-	console.log(song1.volume)
+	sessionStorage.setItem('songVolume', song1.volume)
 }
 
 song1.addEventListener('timeupdate',function() {
