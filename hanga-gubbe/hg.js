@@ -1,4 +1,5 @@
 "use strict";
+document.getElementById("lang").selectedIndex = 0;
 let letterInput = document.getElementById('guessInput');
 let allText     = undefined;
 let wordAmmount = undefined;
@@ -12,6 +13,7 @@ let incLetters  = undefined;
 let lives       = undefined;
 let lineString  = undefined;
 let lang        = undefined;
+let n           = undefined;
 let keyPress    = false;
 
 function readTextFile(file) {
@@ -58,20 +60,39 @@ function normalPlay() {
 		trollWord   = trollWord.toUpperCase();
 		break;
 
-	case 'pl':
+	case 'plH':
 		readTextFile('pl.txt');
-		wordAmmount = 2703280;
+		wordAmmount = 2703279;
 		words       = allText.split('\r\n');
 		word        = words[Math.round(Math.random() * wordAmmount)];
 		word        = word.toUpperCase();
 		break;
-            
-	default:
+    case 'plE':
+    wordAmmount = 9;
+        words   = [
+            'złość',
+            'jabłko',
+            'długo',
+            'Dziewięćsetdziewięćdziesiątdziewięćmiliardówdziewięćsetdziewięćdziesiątdziewięćmilionówdziewięćsetdziewięćdziesiątdziewięćtysięcydziewięćsetdziewięćdziesięciodziewięcioletniego',
+            'chleb',
+            'kot',
+            'szmaciarz',
+            'głĄb',
+            'lodziara'
+        ]
+        word  = words[Math.round(Math.random() * wordAmmount) - 1];
+        word  = word.toUpperCase()
+        break;
+	case 'en':
 		readTextFile('words.txt');
 		wordAmmount = 1785;
 		words       = allText.split(',');
 		wordP       = words[Math.round(Math.random() * wordAmmount)];
 		word        = wordP.slice(1, -1);
+        break;
+    default:
+        alert('Please select a language');
+        return 0;
 	}
 	result      = new Array(word.length);
 	incLetters  = [];
@@ -144,6 +165,9 @@ function onGuess() {
 		}
 	}
 	document.getElementById('guessInput').value = '';
+    if (keyPress === true) {
+        keyPress = false;
+    }
 }
 
 letterInput.addEventListener('input', onGuess, false);
@@ -197,8 +221,22 @@ function restart() {
 	while (incUl.firstChild) {
 		incUl.removeChild(incUl.firstChild);
 	}
-	incLetters = [];
-	lives      = 10;
+    document.getElementById('guessInput').setAttribute('maxlength', '1');
+	incLetters  = [];
+	lives       = 10;
+    allText     = undefined;
+    wordAmmount = undefined;
+    words       = undefined;
+    word        = undefined;
+    wordP       = undefined;
+    trollWord   = undefined;
+    result      = undefined;
+    guess       = undefined;
+    incLetters  = undefined;
+    lives       = undefined;
+    lineString  = undefined;
+    lang        = undefined;
+    keyPress    = false;
 	document.getElementById('lines').innerHTML = '';
 	document.getElementById('goAnswer').innerHTML = '';
 	document.getElementById('guessInput').setAttribute('maxlength', '1');
