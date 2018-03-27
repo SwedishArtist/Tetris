@@ -1,3 +1,6 @@
+const altStop        = document.getElementById('altStop');
+const altReset       = document.getElementById('altReset');
+const altStart       = document.getElementById('altStart');
 const canvas         = document.getElementById('tetris');
 const context        = canvas.getContext('2d');
 const startButton    = document.getElementById('Button'); // används den här?
@@ -12,6 +15,10 @@ let song1            = new Audio('../sound/music/zentrixDFS.mp3')
 sentVolume           = sessionStorage.getItem('songVolume');
 let currentTimeSong1 = sessionStorage.getItem('song1Time');
 song1.currentTime    = currentTimeSong1
+altStop.style.visibility = "hidden"; 
+altStart.style.visibility = "hidden"; 
+altReset.style.visibility = "hidden"; 
+
 
 if (sentVolume != null) {
 	song1.volume = sentVolume;
@@ -472,6 +479,7 @@ function togglePause() {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
+	altStop.style.visibility = "visible"; 
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		toggleStart();
@@ -529,6 +537,8 @@ function resetFunc() {
 document.getElementById('altReset').addEventListener('click', resetFunc, false);
 
 function easy() {
+	altReset.style.visibility = "visible";
+	altStart.style.visibility = "visible";
 	speedScale = 0.97;
 	speedStart = 1000;
 	gameMode   = 'easy';
@@ -538,6 +548,8 @@ function easy() {
 document.getElementById('easy').addEventListener('click', easy, false);
 
 function medium() {
+	altReset.style.visibility = "visible";
+	altStart.style.visibility = "visible";
 	speedScale = 0.95;
 	speedStart = 1000;
 	gameMode   = 'medium';
@@ -547,6 +559,8 @@ function medium() {
 document.getElementById('medium').addEventListener('click', medium, false);
 
 function hard() {
+	altReset.style.visibility = "visible";
+	altStart.style.visibility = "visible";
 	speedScale = 0.9;
 	speedStart = 700;
 	gameMode   = 'hard';
