@@ -318,7 +318,6 @@ let piece = undefined;
 let nextPiece = undefined;
 
 function playerReset() {
-	debugger;
 	let pieces  = '';
 	if (gameMode === 'easy') {
 		pieces  = 'ILJOTSZ.2';
