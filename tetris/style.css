@@ -61,37 +61,30 @@ p {
     height: 20px;
 }
 
-#altStart {
-	position: relative;
-	left: 100px;
-}
-
-/* .altButton {
-	border-top: 1px solid #96d1f8;
-	background: #5684a3;
-	background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#5684a3));
-    background: -webkit-linear-gradient(top, #3e779d, #5684a3);
-    background: -moz-linear-gradient(top, #3e779d, #5684a3);
-    background: -ms-linear-gradient(top, #3e779d, #5684a3);
-    background: -o-linear-gradient(top, #3e779d, #5684a3);
-    padding: 7px 14px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    box-shadow: rgba(0,0,0,1) 0 1px 0;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+.altButton2 {
+	float: left;
+	background-color: transparent;
     color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-width: 2px;
+    border: solid white;
+    cursor: pointer;
     font-size: 15px;
     text-decoration: none;
     vertical-align: middle;
     width: 100px;
     height: 20px;
-    position: relative;
-    left: 50%;
-    top: 5%;
-} */
+    margin: 1px;
+}
+
+
+#altStart {
+	position: relative;
+	left: 100px;
+}
+
 
 .altButton:hover {
 	border-top-color: #28597a;
@@ -99,9 +92,18 @@ p {
     color: #ccc;
 }
 
+.altButton2:hover {
+	opacity: 0.7;
+}
+
+
 .altButton:active {
 	border-top-color: #1b435e;
 	background: #1b435e;
+}
+
+.altButton2:active {
+	opacity: 0.5;
 }
 
 li {
