@@ -2,15 +2,15 @@
 
 Allmänt:
 * Lägg till språk (och se till att pråket sparas i alla spel)
-* Organisera och snygga till
-* Lägga till ljudeffekter, t.ex. knapparna.
+* Organisera och snygga till ✔
+* Lägga till ljudeffekter, t.ex. knapparna. ✔
 * fixa clickljud
 
 Tetris:
 * centrera "paused" (se till att bestämma positionen av mitten istället för det vänstra övre hörnet)
 * Ta bort flervalsmenyn och placera knapparna där istället. (jag som gillade flervalsmenyn)
 * Skriva CSS till de alternativa knapparna ✔
-* Byta namn på start (eller pause) till unpause när speler är pausat ✔
+* Byta namn på start (eller pause) till unpause när spelet är pausat ✔
 * Fixa highscorelisten ✔
 * Skriva pause när spelet är pausat ✔
 * Få restart att fungera ✔
@@ -18,7 +18,6 @@ Tetris:
 
 Lobby:
 * Lägg till olika teman (som länkar olika CSS filer).
-* Flytta titeln till sidan. (?)
 
 Galna ideér:
 * Inloggningar med poäng/valutasystem.
