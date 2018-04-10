@@ -9,6 +9,7 @@ Allmänt:
 Tetris:
 * centrera "paused" (se till att bestämma positionen av mitten istället för det vänstra övre hörnet)
 * Ta bort flervalsmenyn och placera knapparna där istället. (jag som gillade flervalsmenyn)
+* Gör knapparna transparenta med vit text och vita borders så det matchar temat, de är jättefula atm
 * Skriva CSS till de alternativa knapparna ✔
 * Byta namn på start (eller pause) till unpause när spelet är pausat ✔
 * Fixa highscorelisten ✔

@@ -9,6 +9,8 @@ let gamestate        = 'quit';
 let speedScale       = 0.9;
 let speedStart       = 1000;
 let gameMode         = ''; 
+let powerMode        = 'on';
+let power            = 0;
 let clickSound       = new Audio('../sound/click.mp3');
 let breakSound       = new Audio('../sound/jump.mp3');
 let song1            = new Audio('../sound/music/zentrixDFS.mp3')
@@ -100,7 +102,7 @@ function board() {
 	
 } 
 
-// TAR BORT FULLA RADER
+// TAR BORT FULLA RADER (man får extra poäng för extra rader)
 
 function arenaSweep() {
 	let rowCount = 1;
@@ -311,7 +313,7 @@ function restartSweep() {
 
 
 
-// STARTAR OM POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. SKAPAR BITAR
+// STARTAR OM POÄNG. FLYTTAR UPP SPELAREN TILL TOPPEN OCH STARTAR OM IFALL ARENAN ÄR FYLLD. !!!!!SKAPAR BITAR!!!!!
 let piece = undefined;
 let nextPiece = undefined;
 
@@ -323,10 +325,14 @@ function playerReset() {
 		pieces  = 'ILJOTSZ';
 	}
 	piece = createPiece(pieces[pieces.length * Math.random() | 0]);
-	if (dropCounter !== 0){
-		peice = nextPiece
+	if (power === 1) {
+		piece = createPiece('I');
+		power = 0;
 	}
-	nextPiece = piece = createPiece(pieces[pieces.length * Math.random() | 0]);
+	if (dropCounter !== 0){
+		console.log(dropCounter);
+	}
+	// nextPiece = piece = createPiece(pieces[pieces.length * Math.random() | 0]);
 	player.matrix = piece;
 	player.pos.y  = 0;
 	player.pos.x  =  (arena[0].length / 2 | 0) -
@@ -454,6 +460,8 @@ document.addEventListener('keydown', event => {
 		playerRotate(-1);
 	} else if (event.keyCode === 87) {
 		playerRotate(1);
+	} else if (event.keyCode === 69 || powerMode === 'on') { // ( ͡° ͜ʖ ͡°)
+		power = 1
 	}
 });
 
