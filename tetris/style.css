@@ -27,17 +27,11 @@ button {
 	text-align: center;
 }
 
-/*
-p {
+#volumeSlider {
 	position: absolute;
-	bottom: 500px;
-	text-align: center;
-	border: 1px solid #7f8c8d;
-	width: 150px;
-	height: 75px;
-	
-}
-*/
+	top: 60px;
+	right: 30px;
+} 
 
 .altButtons {
 	position: absolute;
@@ -63,7 +57,7 @@ p {
 
 .altButton2 {
 	float: left;
-	background-color: transparent;
+	background-color: #191919;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -80,6 +74,7 @@ p {
 }
 
 
+
 #altStart {
 	position: relative;
 	left: 100px;
@@ -93,18 +88,15 @@ p {
 }
 
 .altButton2:hover {
-	opacity: 0.7;
+	background-color: white;
+	color: black;
 }
 
 
 .altButton:active {
 	border-top-color: #1b435e;
 	background: #1b435e;
-}
-
-.altButton2:active {
-	opacity: 0.5;
-}
+}   
 
 li {
 	text-align: center;
@@ -120,18 +112,32 @@ canvas {
 
 
 #myList {
-	border: 1px solid;
 	position: absolute;
-	top: 26%;
-	right: 6.5%;
+	top: 206px;
+	text-align: center;
+	border: 2px solid;
+	right: 8px;
 	background-color: black;
 	width: 200px;
+	height: 300px;
 }
 
 h2 {
-	border: 1px solid;
-	bottom: 90%;
+	border: 2px solid white;
+	top: 350px;
 	right: 50px;
+	background: linear-gradient(#101419, #1e2a38);
+	color: #ff30af;
+}
+
+h3 {
+	position: absolute;
+	border: 2px solid white;
+	background-color: #28081c;
+	width: 200px;
+	font-size: 13px;
+	top: 173px;
+	right: 8px;
 }
 
 #paused {
@@ -139,7 +145,7 @@ h2 {
 	display: none;
 	z-index: 3;
 	left: 50%;
-	top: 50%;
+	top: 79%;
 	border: 1px solid transparent;
 	width: 100px;
 	position: absolute;
@@ -153,23 +159,35 @@ h2 {
 
 .text {
 	position: absolute;
-	top: 250px;
-	text-align: center;
-	border: 1px solid #7f8c8d;
+	top: 508px;
+	border: 2px solid #f7f7f7;
 	width: 200px;
 	height: 150px;
-
-}
+	right: 8px;
+	background-color: #28081c;
+} 
 
 #easy {
 	color: green;
+}
+
+#easy:hover {
+	background-color: #254727;
 }
 
 #medium {
 	color: yellow;
 }
 
+#medium:hover {
+	background-color: #827e3b;
+}
+
 #hard {
 	color: red;
+}
+
+#hard:hover {
+	background-color: #823b3b;
 }
 
