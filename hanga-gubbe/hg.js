@@ -235,7 +235,6 @@ function restart() {
     incLetters  = undefined;
     lives       = undefined;
     lineString  = undefined;
-    lang        = undefined;
     keyPress    = false;
 	document.getElementById('lines').innerHTML = '';
 	document.getElementById('goAnswer').innerHTML = '';

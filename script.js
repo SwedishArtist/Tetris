@@ -40,10 +40,13 @@ function dropFunc() {
 	document.getElementById('myDropdown').classList.toggle('show');
 }
 
+function click() {
+	clickSound.play();
+    clickSound.currentTime = 0;
+}
+
 window.onclick = function(event) {
 	if (!event.target.matches('.dropbtn')) {
-    clickSound.play();
-    clickSound.currentTime = 0;
 		let dropdowns = document.getElementsByClassName('dropdown-content');
 		let i;
 		for (i = 0; i < dropdowns.length; i++) {
@@ -52,5 +55,8 @@ window.onclick = function(event) {
 				openDropdown.classList.remove('show');
 			}
 		}
+	} else {
+		clickSound.play();
+    	clickSound.currentTime = 0;
 	}
 };
