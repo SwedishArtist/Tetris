@@ -460,8 +460,9 @@ document.addEventListener('keydown', event => {
 		playerRotate(-1);
 	} else if (event.keyCode === 87) {
 		playerRotate(1);
-	} else if (event.keyCode === 69 || powerMode === 'on') { // ( ͡° ͜ʖ ͡°)
-		power = 1
+	} else if (event.keyCode === 69 && powerMode === 'on' && power === 0 && player.score >= 40) { // ( ͡° ͜ʖ ͡°)
+		power = 1;
+		player.score -= 40
 	}
 });
 
