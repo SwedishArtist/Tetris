@@ -39,7 +39,7 @@ button {
 	top: 40px;
 }
 
-.altButton {
+/*.altButton {
 	float: left;
 	background-color: #4286f4;
     color: white;
@@ -53,7 +53,7 @@ button {
     vertical-align: middle;
     width: 100px;
     height: 20px;
-}
+} */
 
 .altButton2 {
 	float: left;
@@ -73,6 +73,10 @@ button {
     margin: 1px;
 }
 
+.altButton2:hover {
+	background-color: white;
+	color: black;
+}
 
 
 #altStart {
@@ -81,22 +85,18 @@ button {
 }
 
 
-.altButton:hover {
+/*.altButton:hover {
 	border-top-color: #28597a;
    	background: #28597a;
-    color: #ccc;
-}
-
-.altButton2:hover {
-	background-color: white;
-	color: black;
-}
+    color: #ccc; 
+} */
 
 
-.altButton:active {
+
+/*.altButton:active {
 	border-top-color: #1b435e;
 	background: #1b435e;
-}   
+}   */
 
 li {
 	text-align: center;
@@ -175,6 +175,12 @@ h3 {
 	background-color: #254727;
 }
 
+#easy:active {
+	background-color: #1c381e;
+	color: #64d16a;
+}
+
+
 #medium {
 	color: yellow;
 }
@@ -183,6 +189,12 @@ h3 {
 	background-color: #827e3b;
 }
 
+#medium:active {
+	background-color: #635f1e;
+	color: #fff77a;
+}
+
+
 #hard {
 	color: red;
 }
@@ -190,4 +202,15 @@ h3 {
 #hard:hover {
 	background-color: #823b3b;
 }
+
+#hard:active {
+	background-color: #602a2a;
+	color: #ed7b7b;
+}
+
+
+
+
+
+
 
