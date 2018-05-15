@@ -45,6 +45,7 @@ function click() {
     clickSound.currentTime = 0;
 }
 
+// Språk
 window.onclick = function(event) {
 	if (!event.target.matches('.dropbtn')) {
 		let dropdowns = document.getElementsByClassName('dropdown-content');
