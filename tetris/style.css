@@ -11,6 +11,12 @@ a {
 	text-decoration: none;
 }
 
+ul {
+	list-style-type: none;
+	position: relative;
+	right: 17px;
+}
+
 canvas {
 	border: solid .2em #aeb6bf;
 	height: 90vh;
@@ -106,6 +112,10 @@ button {
 }
 
 .altButton2:hover {
+	background-color: #424242;
+	color: white;
+}
+.altButton2:active {
 	background-color: white;
 	color: black;
 }
