@@ -1,6 +1,9 @@
 const altStop        = document.getElementById('altStop');
 const altReset       = document.getElementById('altReset');
 const altStart       = document.getElementById('altStart');
+const easyB          = document.getElementById('easy');
+const mediumB        = document.getElementById('medium');
+const hardB          = document.getElementById('hard');
 const canvas         = document.getElementById('tetris');
 const context        = canvas.getContext('2d');
 const startButton    = document.getElementById('Button'); // används den här?
@@ -461,8 +464,9 @@ document.addEventListener('keydown', event => {
 	} else if (event.keyCode === 87) {
 		playerRotate(1);
 	} else if (event.keyCode === 69 && powerMode === 'on' && power === 0 && player.score >= 40) { // ( ͡° ͜ʖ ͡°)
+		debugger;
 		power = 1;
-		player.score -= 40
+		player.score -= 40;
 	}
 });
 
@@ -488,7 +492,11 @@ function togglePause() {
 // START, STOP OCH RESET KNAPPAR
 
 function startFunc() {
+	altReset.style.visibility = "visible";
 	altStop.style.visibility = "visible"; 
+	easyB.style.visibility = "hidden";
+	mediumB.style.visibility = "hidden";
+	hardB.style.visibility = "hidden";
 	if (gamestate === 'paused') {
 		gamestate = 'playing';
 		toggleStart();
@@ -546,7 +554,6 @@ function resetFunc() {
 document.getElementById('altReset').addEventListener('click', resetFunc, false);
 
 function easy() {
-	altReset.style.visibility = "visible";
 	altStart.style.visibility = "visible";
 	speedScale = 0.97;
 	speedStart = 1000;
@@ -557,7 +564,6 @@ function easy() {
 document.getElementById('easy').addEventListener('click', easy, false);
 
 function medium() {
-	altReset.style.visibility = "visible";
 	altStart.style.visibility = "visible";
 	speedScale = 0.95;
 	speedStart = 1000;
@@ -568,7 +574,6 @@ function medium() {
 document.getElementById('medium').addEventListener('click', medium, false);
 
 function hard() {
-	altReset.style.visibility = "visible";
 	altStart.style.visibility = "visible";
 	speedScale = 0.9;
 	speedStart = 700;
