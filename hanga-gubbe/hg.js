@@ -68,7 +68,7 @@ function normalPlay() {
 		word        = word.toUpperCase();
 		break;
     case 'plE':
-    wordAmmount = 9;
+    wordAmmount = 13;
         words   = [
             'złość',
             'jabłko',
@@ -76,11 +76,15 @@ function normalPlay() {
             'Dziewięćsetdziewięćdziesiątdziewięćmiliardówdziewięćsetdziewięćdziesiątdziewięćmilionówdziewięćsetdziewięćdziesiątdziewięćtysięcydziewięćsetdziewięćdziesięciodziewięcioletniego',
             'chleb',
             'kot',
-            'szmaciarz',
             'głĄb',
-            'lodziara'
+            'indyk',
+            'stopień',
+            'najzłośliwszych',
+            'najzłośliwszymi',
+            'najzłudniejszą',
+            'najznośniejszej',
         ]
-        word  = words[Math.round(Math.random() * wordAmmount) - 1];
+        word  = words[Math.round(Math.random() * words.length)];
         word  = word.toUpperCase()
         break;
 	case 'en':
@@ -235,7 +239,6 @@ function restart() {
     incLetters  = undefined;
     lives       = undefined;
     lineString  = undefined;
-    lang        = undefined;
     keyPress    = false;
 	document.getElementById('lines').innerHTML = '';
 	document.getElementById('goAnswer').innerHTML = '';
