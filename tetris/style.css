@@ -62,7 +62,7 @@ button {
 } */
 
 .altButton2 {
-	float: left;
+	//float: left;
 	background-color: #191919;
     color: white;
     padding: 16px;
@@ -87,7 +87,8 @@ button {
 
 #altStart {
 	position: relative;
-	left: 100px;
+	top: 118px;
+	left: 0;
 }
 
 /*#altStart:active {
@@ -107,7 +108,17 @@ button {
     background-size: 300px, 300px;
 } 
 
+#altStop {
+	position: relative;
+	top: 118px;
+	left: 0;
+}
 
+#altReset {
+	position: relative;
+	top: 118px;
+	left: 0;
+}
 
 /*.altButton:hover {
 	border-top-color: #28597a;
@@ -145,7 +156,7 @@ canvas {
 
 #highscore {
 	position: absolute;
-	top: 215px;
+	top: 128px;
 	right: 0px;
 }
 
@@ -168,7 +179,7 @@ canvas {
 #score {
 	position: absolute;
 	right: 49.4%;
-	top: 182px;
+	top: 110px;
 	text-shadow: 2px 2px 5px red; 
 }
 
@@ -209,7 +220,7 @@ h3 {
 
 .text {
 	position: absolute;
-	top: 508px;
+	top: 428px;
 	border: 2px solid #f7f7f7;
 	width: 200px;
 	height: 260px;

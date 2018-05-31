@@ -4,7 +4,7 @@
 } */
 
 body {
-	background-image: linear-gradient(#32563b, #404142);
+	background-image: linear-gradient(#32563b, #1c1c1c);
 	background-size: 100vw 100vh; 
     text-align: left;
     font-family: Open Sans;
@@ -24,8 +24,8 @@ ul {
 	z-index: 1;
 }
 
-h3 {
-    /* margin: 0px;
+/*h3 {
+    margin: 0px;
 	padding: 0px;
 	left: 30%;
 	top: 5%;
@@ -36,6 +36,7 @@ h3 {
 	position: absolute;
 	z-index: 1; 
 */
+/*
     margin: 0px;
 	padding: 0px;
     left: 30%;
@@ -44,7 +45,7 @@ h3 {
     position: absolute;
     color: #ffe2f0;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;   
-}
+} 
 
 h4 {
 	margin: 0px;
@@ -56,12 +57,190 @@ h4 {
     position: center;
     color: #ffe2f0;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;   
+} */
+
+.Lobby-design {
+	position: relative;
+	left: 30%;
+	top: 20%;
+	width: 450px;
+	height: 120px;
+	border: 5px solid #00c5c9;
+	background: #055e60;
+	box-shadow: 0 0 18px 0 #77daff;
 }
+
+#letter-L {
+	position: absolute;
+	left: 0;
+	top: -4px;
+	width: 80px;
+	height: 100%;
+	border: 4px solid #00c5c9;
+	background: #fff;
+}
+
+#letter-L::after {
+	position: absolute;
+	content: "";
+	right: 0;
+	top: 0;
+	width: 50px;
+	height: 90px;
+	background: #003c3d;
+}
+
+#letter-O {
+	position: absolute;
+	left: 93px;
+	top: -4px;
+	width: 80px;
+	height: 100%;
+	border: 4px solid #00c5c9;
+	background: #fff;
+}
+
+#letter-O::after {
+	position: absolute;
+	content: "";
+	right: 20px;
+	top: 20px;
+	width: 40px;
+	height: 80px;
+	background: #003c3d;
+
+}
+
+#letter-B {
+	position: absolute;
+	left: 186px;
+	top: -4px;
+	width: 80px;
+	height: 100%;
+	border: 4px solid #00c5c9;
+	background: #fff;
+}
+
+#letter-B::before {
+	position: absolute;
+	content: "";
+	right: 20px;
+	top: 20px;
+	width: 40px;
+	height: 20px;
+	background: #003c3d;
+}
+
+#letter-B::after {
+	position: absolute;
+	content: "";
+	right: 20px;
+	bottom: 20px;
+	width: 40px;
+	height: 20px;
+	background: #003c3d;
+}
+
+#letter-B2 {
+	position: absolute;
+	left: 279px;
+	top: -4px;
+	width: 80px;
+	height: 100%;
+	border: 4px solid #00c5c9;
+	background: #fff;
+}
+
+#letter-B2::before {
+	position: absolute;
+	content: "";
+	right: 20px;
+	top: 20px;
+	width: 40px;
+	height: 20px;
+	background: #003c3d;
+}
+
+#letter-B2::after {
+	position: absolute;
+	content: "";
+	right: 20px;
+	bottom: 20px;
+	width: 40px;
+	height: 20px;
+	background: #003c3d;
+}
+
+#letterB-part {
+	position: absolute;
+	right: 0;
+	top: 43%;
+	border-right: 20px solid #003c3d;
+	border-top: 12px solid transparent;
+	border-bottom: 12px solid transparent;
+}
+
+#letterB-part2 {
+	position: absolute;
+	right: 0;
+	top: 43%;
+	border-right: 20px solid #003c3d;
+	border-top: 12px solid transparent;
+	border-bottom: 12px solid transparent;
+}
+
+#letter-Y {
+	position: absolute;
+	left: 460px;
+	top: -4px;
+	width: 80px;
+	height: 100%;
+	border: 4px solid #00c5c9;
+	background: #fff;
+	box-shadow: 0 0 18px 0 #77daff;
+}
+
+#letter-Y2 {
+	position: absolute;
+	left: 35%;
+	top: 0;
+	border-top: 20px solid #003c3d;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+}
+
+#letter-Y3 {
+	position: absolute;
+	left: 0;
+	top: 20%;
+	border-top: 25px solid transparent;
+	border-left: 12px solid #003c3d;
+	border-bottom: 15px solid transparent;
+	border-right: 15px solid transparent;
+}
+
+#letter-Y4 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 65px;
+	width: 0;
+	border-bottom: 90px solid #003c3d;
+	border-left: 65px solid transparent;
+} 
 
 p {
 	color: white;
 	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;   
 }
+
+footer {
+	position: absolute;
+	top: 90%;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;   
+}
+
 
 .title {
 	background:linear-gradient(#37ff00, #ef0000, #1602f4);
@@ -74,6 +253,7 @@ img {
 	width: 15%;
 	height: auto;
 	border: 2px solid #28081c;
+	box-shadow: 0 0 18px 0 #77daff;
 }
 
 #info {
